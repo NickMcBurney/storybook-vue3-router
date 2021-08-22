@@ -2,6 +2,8 @@
 
 Integration of Vue 3 and Vue Router in Storybook stories.
 
+![Storybook with Vue 3 Router Integration](https://github.com/NickMcBurney/storybook-vue-router/blob/main/storybook-vue-router.gif?raw=true)
+
 ## Install
 `npm install storybook-addon-vue-router`
 
