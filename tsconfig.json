@@ -7,7 +7,6 @@
     "experimentalDecorators": true,
     "incremental": false,
     "isolatedModules": true,
-    "jsx": "react",
     "lib": ["es2017", "dom"],
     "module": "commonjs",
     "noImplicitAny": true,

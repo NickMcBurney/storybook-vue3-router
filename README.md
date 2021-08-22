@@ -1,114 +1,85 @@
-# Storybook Addon Kit
+# Storybook Vue 3 Router
 
-Simplify the creation of Storybook addons
+Integration of Vue 3 and Vue Router in Storybook stories.
 
-- 📝 Live-editing in development
-- ⚛️ React/JSX support
-- 📦 Transpiling and bundling with Babel
-- 🏷 Plugin metadata
-- 🚢 Release management with [Auto](https://github.com/intuit/auto)
-- 🧺 Boilerplate and sample code
-- 🛄 ESM support
-- 🛂 TypeScript by default with option to eject to JS
+## Install
+`npm install storybook-addon-vue-router`
 
-## Getting Started
+## Usage
+After installing you can import the Storybook decorator and start working with components using Vue Router v4+
+```ts
+/* import `action` to log router changes (this can be used by this addon to log router events) */
+import { action } from '@storybook/addon-actions';
 
-Click the **Use this template** button to get started.
+/* import Storybook addon (decorator for Vue Router) */
+import vueRouter from 'storybook-addon-vue-router'
 
-![](https://user-images.githubusercontent.com/321738/125058439-8d9ef880-e0aa-11eb-9211-e6d7be812959.gif)
+/* component you're writing story for */
+import myRouterWrapperComponent from './myRouterWrapperComponent.vue'
 
-Clone your repository and install dependencies.
+/* your component defaults */
+export default {
+  title: 'Components/Vue Router View Wrapper',
+  component: myRouterWrapperComponent,
+}
 
-```sh
-yarn
+/* your component story */
+const Template = (args: Record<string, unknown>) => ({
+  components: { 'MyRouterWrapper': myRouterWrapperComponent },
+  setup () {
+    return { args }
+  },
+  template: `<MyRouterWrapper />`
+})
+/* youur story export */
+export const Default = Template.bind({})
+
+/* adding custom decorator to allow use of `<router-view>` and Vue Router 4+ */
+Default.decorators = [
+  vueRouter(null, (to, from) => action('ROUTE CHANGED')({ to: to, from: from }))
+]
 ```
 
-### Development scripts
-
-- `yarn start` runs babel in watch mode and starts Storybook
-- `yarn build` build and package your addon code
-
-### Switch from TypeScript to JavaScript
-
-Don't want to use TypeScript? We offer a handy eject command: `yarn eject-ts`
-
-This will convert all code to JS. It is a destructive process, so we recommended running this before you start writing any code.
-
-## What's included?
-
-![Demo](https://user-images.githubusercontent.com/42671/107857205-e7044380-6dfa-11eb-8718-ad02e3ba1a3f.gif)
-
-The addon code lives in `src`. It demonstrates all core addon related concepts. The three [UI paradigms](https://storybook.js.org/docs/react/addons/addon-types#ui-based-addons)
-
-- `src/Tool.js`
-- `src/Panel.js`
-- `src/Tab.js`
-
-Which, along with the addon itself, are registered in `src/preset/manager.js`.
-
-Managing State and interacting with a story:
-
-- `src/withGlobals.js` & `src/Tool.js` demonstrates how to use `useGlobals` to manage global state and modify the contents of a Story.
-- `src/withRoundTrip.js` & `src/Panel.js` demonstrates two-way communication using channels.
-- `src/Tab.js` demonstrates how to use `useParameter` to access the current story's parameters.
-
-Your addon might use one or more of these patterns. Feel free to delete unused code. Update `src/preset/manager.js` and `src/preset/preview.js` accordingly.
-
-Lastly, configure you addon name in `src/constants.js`.
-
-### Metadata
-
-Storybook addons are listed in the [catalog](https://storybook.js.org/addons) and distributed via npm. The catalog is populated by querying npm's registry for Storybook-specific metadata in `package.json`. This project has been configured with sample data. Learn more about available options in the [Addon metadata docs](https://storybook.js.org/docs/react/addons/addon-catalog#addon-metadata).
-
-## Release Management
-
-### Setup
-
-This project is configured to use [auto](https://github.com/intuit/auto) for release management. It generates a changelog and pushes it to both GitHub and npm. Therefore, you need to configure access to both:
-
-- [`NPM_TOKEN`](https://docs.npmjs.com/creating-and-viewing-access-tokens#creating-access-tokens) Create a token with both _Read and Publish_ permissions.
-- [`GH_TOKEN`](https://github.com/settings/tokens) Create a token with the `repo` scope.
-
-Then open your `package.json` and edit the following fields:
-
-- `name`
-- `author`
-- `repository`
-
-#### Local
-
-To use `auto` locally create a `.env` file at the root of your project and add your tokens to it:
-
-```bash
-GH_TOKEN=<value you just got from GitHub>
-NPM_TOKEN=<value you just got from npm>
+The example above uses:
+```ts
+Default.decorators = [
+  vueRouter(null, (to, from) => action('ROUTE CHANGED')({ to: to, from: from }))
+]
 ```
 
-Lastly, **create labels on GitHub**. You’ll use these labels in the future when making changes to the package.
+Which will:
+- Use this packages default routes (`/` and `/about` routes, with `<router-link>` for each route)
+- Add a Storybook action to log the route changes
 
-```bash
-npx auto create-labels
+### Pass custom routes
+You can pass custom router setup by including (or importing into your `.stories.` file) and passing this as the first parametor within the `vueRouter` decorator:
+
+```ts
+const customRoutes = [
+  {
+    path: '/',
+    name: 'home',
+    component: HomeComponent // this would need to be imported into the `.stories` file
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: AboutComponent // this would need to be imported into the `.stories` file
+  }
+  {
+    /* ... other routes ... */
+  }
+]
+
+/* ... other story setup ... */
+Default.decorators = [
+  vueRouter(customRoutes, (to, from) => action('ROUTE CHANGED')({ to: to, from: from }))
+]
 ```
 
-If you check on GitHub, you’ll now see a set of labels that `auto` would like you to use. Use these to tag future pull requests.
+### Optional Action
+The second parameter for `vueRouter` is a function which is ran on Vue Routers `beforeEach` route guard.
 
-#### GitHub Actions
+In our examples we're using this to log an action event to the Storybook UI.
 
-This template comes with GitHub actions already set up to publish your addon anytime someone pushes to your repository.
-
-Go to `Settings > Secrets`, click `New repository secret`, and add your `NPM_TOKEN`.
-
-### Creating a releasing
-
-To create a release locally you can run the following command, otherwise the GitHub action will make the release for you.
-
-```sh
-yarn release
-```
-
-That will:
-
-- Build and package the addon code
-- Bump the version
-- Push a release to GitHub and npm
-- Push a changelog to GitHub
+This parametor is optional.
