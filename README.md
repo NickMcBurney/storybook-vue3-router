@@ -1,11 +1,13 @@
 # Storybook Vue 3 Router
 
-Integration of Vue 3 and Vue Router in Storybook stories.
+Integration of Vue 3 and Vue Router v4 in Storybook stories.
+
+You will need to use this plugin if you wish to include stories for any component using Vue Router v4+ `<router-view>` and `<router-link>`
 
 ![Storybook with Vue 3 Router Integration](https://github.com/NickMcBurney/storybook-vue-router/blob/main/storybook-vue-router.gif?raw=true)
 
 ## Install
-`npm install storybook-addon-vue-router`
+`npm install storybook-vue3-router`
 
 ## Usage
 After installing you can import the Storybook decorator and start working with components using Vue Router v4+
