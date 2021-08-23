@@ -1,6 +1,6 @@
 {
-  "name": "storybook-addon-vue-router",
-  "version": "0.0.2",
+  "name": "storybook-vue3-router",
+  "version": "0.0.1",
   "description": "Vue 3 & Vue Router 4+ Storybook Integration",
   "keywords": [
     "storybook-addons",
