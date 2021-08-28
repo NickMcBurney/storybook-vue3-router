@@ -1,22 +1,41 @@
 # Storybook Vue 3 Router
 
-Integration of Vue 3 and Vue Router v4 in Storybook stories.
+A Storybook decorator that allows you to use your routing-aware components.
 
-You will need to use this plugin if you wish to include stories for any component using Vue Router v4+ `<router-view>` and `<router-link>`
+You will need to use this plugin if you wish to include stories for any component using Vue Router v4 `<router-view>` and `<router-link>`
 
-![Storybook with Vue 3 Router Integration](https://github.com/NickMcBurney/storybook-vue-router/blob/main/storybook-vue-router.gif?raw=true)
+Vue Router v4 is used with Vue 3 projects.
 
 ## Install
 `npm install storybook-vue3-router`
 
-## Usage
-After installing you can import the Storybook decorator and start working with components using Vue Router v4+
+## Quick Usage
+After installing you can import the Storybook decorator and start working with components using Vue Router v4
+
+```ts
+/* import Storybook addon (decorator for Vue Router) */
+import vueRouter from 'storybook-vue3-router'
+
+/* ...story setup... */
+
+/* your story export */
+export const Default = Template.bind({})
+
+/* adding custom decorator to allow use of `<router-view>` and Vue Router 4+ */
+Default.decorators = [
+  vueRouter()
+]
+```
+
+![Storybook with Vue 3 Router Integration](https://github.com/NickMcBurney/storybook-vue-router/blob/main/storybook-vue-router.gif?raw=true)
+
+## Full Example
 ```ts
 /* import `action` to log router changes (this can be used by this addon to log router events) */
 import { action } from '@storybook/addon-actions';
 
 /* import Storybook addon (decorator for Vue Router) */
-import vueRouter from 'storybook-addon-vue-router'
+import vueRouter from 'storybook-vue3-router'
 
 /* component you're writing story for */
 import myRouterWrapperComponent from './myRouterWrapperComponent.vue'
@@ -35,7 +54,7 @@ const Template = (args: Record<string, unknown>) => ({
   },
   template: `<MyRouterWrapper />`
 })
-/* youur story export */
+/* your story export */
 export const Default = Template.bind({})
 
 /* adding custom decorator to allow use of `<router-view>` and Vue Router 4+ */
@@ -51,11 +70,11 @@ Default.decorators = [
 ]
 ```
 
-Which will:
+#### Which will:
 - Use this packages default routes (`/` and `/about` routes, with `<router-link>` for each route)
 - Add a Storybook action to log the route changes
 
-### Pass custom routes
+## Custom routes
 You can pass custom router setup by including (or importing into your `.stories.` file) and passing this as the first parametor within the `vueRouter` decorator:
 
 ```ts
