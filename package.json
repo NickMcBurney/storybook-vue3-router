@@ -1,7 +1,7 @@
 {
   "name": "storybook-vue3-router",
   "version": "1.0.0",
-  "description": "Vue 3 & Vue Router 4+ Storybook Integration",
+  "description": "A Storybook decorator that allows you to build stories for your routing-aware components.",
   "keywords": [
     "storybook-addons",
     "vue",
