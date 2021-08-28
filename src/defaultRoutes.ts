@@ -3,7 +3,7 @@ import type { RouteRecordRaw } from "vue-router";
 const Home = {
   template: `
     <div>
-      <h1>Home</h1>
+      <h2>Home</h2>
       
       <div style="display: flex; gap: 1em">
         <router-link to="/">Home</router-link>
@@ -16,7 +16,7 @@ const Home = {
 const About = {
   template: `
     <div>
-      <h1>About</h1>
+      <h2>About</h2>
 
       <div style="display: flex; gap: 1em">
         <router-link to="/">Home</router-link>
