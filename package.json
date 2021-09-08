@@ -13,7 +13,7 @@
   },
   "author": "Nick McBurney",
   "license": "MIT",
-  "main": "dist/cjs/index.js",
+  "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/ts/index.d.ts",
   "files": [
