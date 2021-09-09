@@ -12,7 +12,8 @@ export const withVueRouter = (routesParam?: Array<RouteRecordRaw>, beforeEach?: 
     wrapper: (storyFn, context) => {
       const vueRouterGlobalProperty = app.config.globalProperties.$router
       const vueRouteGlobalProperty = app.config.globalProperties.$route
-      if (context.viewMode === 'story' && !vueRouterGlobalProperty && !vueRouteGlobalProperty) {
+      
+      if (!vueRouterGlobalProperty && !vueRouteGlobalProperty) {
         /* get routes from either `routesParam` or use `defaultRoutes` */
         const routes: Array<RouteRecordRaw> = routesParam || defaultRoutes
 
