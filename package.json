@@ -62,7 +62,10 @@
     "zx": "^1.14.1"
   },
   "peerDependencies": {
-    "@storybook/addons": "^6.3.6"
+    "@storybook/addons": "^6.3.6",
+    "@storybook/vue3": "6.x",
+    "vue": "3.x",
+    "vue-router": "4.x"
   },
   "peerDependenciesMeta": {
     "vue": {
