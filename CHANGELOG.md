@@ -1,3 +1,20 @@
+# v1.0.5 (Fri Oct 15 2021)
+
+#### 🐛 Bug Fix
+
+- Added peer dependencies & refactored release pipeline [#6](https://github.com/NickMcBurney/storybook-vue3-router/pull/6) (jackdomleo7@gmail.co.uk)
+
+#### ⚠️ Pushed to `main`
+
+- skip ci: change log update (nick.mcburney@ocean.co.uk)
+
+#### Authors: 2
+
+- Jack Domleo ([@jackdomleo7](https://github.com/jackdomleo7))
+- Nick McBurney (nick.mcburney@ocean.co.uk)
+
+---
+
 # v1.0.4 (Fri Sep 10 2021)
 
 #### 🐛 Bug Fix
