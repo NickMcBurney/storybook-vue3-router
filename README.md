@@ -1,5 +1,7 @@
 # Storybook Vue 3 Router
 
+[![Release](https://github.com/NickMcBurney/storybook-vue3-router/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/NickMcBurney/storybook-vue3-router/actions/workflows/release.yml)
+
 A Storybook decorator that allows you to use your routing-aware components.
 
 You will need to use this plugin if you wish to include stories for any component using Vue Router v4 `<router-view>` and `<router-link>`
