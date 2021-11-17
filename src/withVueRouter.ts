@@ -1,7 +1,6 @@
 
 import { app } from "@storybook/vue3";
 import { makeDecorator } from "@storybook/addons";
-import { action } from '@storybook/addon-actions';
 
 import {
   Router,
@@ -16,14 +15,9 @@ import { defaultRoutes } from './defaultRoutes'
 
 function routerGuardFn (router: Router, beforeEach?: NavigationGuard) {
   if (typeof beforeEach === 'function') {
-    /* fire `beforeEach` param on `router.beforeEach` and pass `to`, `from` and `next()` params to the function */
+    // fire `beforeEach` param on `router.beforeEach` and pass `to`, `from` and `next()` params to the function
     router.beforeEach(
       (to, from, next) => beforeEach(to, from, next)
-    )
-  } else {
-    /* if no beforeEach function is passed then use default storybook action to log route changes */
-    router.beforeEach(
-      (to, from) => action('beforeEach')({ to: to.fullPath, from: from.fullPath })
     )
   }
 }
