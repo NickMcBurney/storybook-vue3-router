@@ -37,6 +37,7 @@
     "build-storybook": "build-storybook",
     "prerelease": "zx scripts/prepublish-checks.mjs",
     "release": "yarn build && auto shipit",
+    "release:dry": "yarn build && auto shipit --dry-run",
     "eject-ts": "zx scripts/eject-typescript.mjs"
   },
   "dependencies": {
@@ -47,8 +48,8 @@
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.13.0",
-    "@storybook/addon-essentials": "^6.3.6",
-    "@storybook/vue3": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/vue3": "^6.3.12",
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
     "boxen": "^5.0.1",

@@ -1,21 +1,33 @@
 <template>
   <div class="my-wrapper">
-    <h1>{{ title }}</h1>
+    <div class="intro">
+      <h1>{{ title }}</h1>
+      <p><code>Path: {{ fullPath }}</code></p>
+    </div>
+
     <!-- @slot pass `<router-view>` to slot -->
     <slot></slot>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
+
+import { useRoute } from 'vue-router'
 
 export default defineComponent({
-  name: 'MyRouterWrapper',
+  name: 'RouterViewWrapper',
   props: {
     title: {
       type: String,
       default: 'Storybook Vue 3 Router'
     }
+  },
+  setup () {
+    const route = useRoute()
+    const fullPath = computed(() => route.fullPath )
+
+    return { fullPath }
   }
 })
 </script>
@@ -29,6 +41,10 @@ export default defineComponent({
   align-items: center;
   /* justify-content: center; */
   font-family: "Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+.intro {
+  flex-basis: 100%;
 }
 
 h1 {
@@ -48,5 +64,25 @@ h1 {
 .slide-fade-leave-to {
   transform: translateY(100px);
   opacity: 0;
+}
+
+button {
+  appearance: none;
+  border: none;
+  font-family: "Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 10px 16px;
+  border-radius: 4px;
+  background: #1da7fd;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button.grey {
+  background: #777;
+}
+
+a {
+  color: #1da7fd;
 }
 </style>
