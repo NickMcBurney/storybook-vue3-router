@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { ref, computed } from 'vue'
 import { useRouter } from "vue-router";
 
-import vueRouter from '../src/withVueRouter'
+import vueRouter from '../dist/esm'
 
 import routerViewWrapper from './components/routerViewWrapper.vue'
 

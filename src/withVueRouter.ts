@@ -60,6 +60,7 @@ export const withVueRouter = (
       /* setup router guards */
       /* 
        ! BUG: This causes the beforeEach events to fire multiple times if you click on multiple stories
+       --- TRY PASSING STORY ID TO ROUTES / ROUTER-LINKS TO MAKE STORY ROUTES ENTIRELY UNIQUE ---
        routerGuardFn(router, options?.beforeEach)
       */
 
@@ -75,6 +76,7 @@ export const withVueRouter = (
       /* setup router guards */
       /* 
        ! BUG: This causes the beforeEach events to fire multiple times if you click on multiple stories
+       --- TRY PASSING STORY ID TO ROUTES / ROUTER-LINKS TO MAKE STORY ROUTES ENTIRELY UNIQUE ---
        routerGuardFn(existingRouter, options?.beforeEach)
       */
 

@@ -6,6 +6,7 @@ module.exports = {
   env: {
     esm: {
       presets: [
+        "minify",
         [
           "@babel/preset-env",
           {

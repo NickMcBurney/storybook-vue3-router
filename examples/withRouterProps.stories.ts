@@ -1,4 +1,4 @@
-import vueRouter from '../src/withVueRouter'
+import vueRouter from '../dist/esm'
 
 import routerViewWrapper from './components/routerViewWrapper.vue'
 
