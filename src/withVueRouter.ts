@@ -58,7 +58,7 @@ export const withVueRouter = (
       });
       
       /* setup router guards */
-      /* 
+      /*
        ! BUG: This causes the beforeEach events to fire multiple times if you click on multiple stories
        routerGuardFn(router, options?.beforeEach)
       */
@@ -73,7 +73,7 @@ export const withVueRouter = (
       resetRoutes(existingRouter, routes)
 
       /* setup router guards */
-      /* 
+      /*
        ! BUG: This causes the beforeEach events to fire multiple times if you click on multiple stories
        routerGuardFn(existingRouter, options?.beforeEach)
       */
