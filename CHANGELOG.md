@@ -1,3 +1,15 @@
+# v1.0.6 (Fri Nov 19 2021)
+
+#### ⚠️ Pushed to `main`
+
+- Create build-storybook.yml ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### Authors: 1
+
+- Nick McBurney ([@NickMcBurney](https://github.com/NickMcBurney))
+
+---
+
 # v1.0.5 (Fri Oct 15 2021)
 
 #### 🐛 Bug Fix
