@@ -13,14 +13,20 @@ import {
 
 import { defaultRoutes } from './defaultRoutes'
 
+/* NOT USED - see bug notes in `withVueRouter()`
 function routerGuardFn (router: Router, beforeEach?: NavigationGuard) {
   if (typeof beforeEach === 'function') {
     // fire `beforeEach` param on `router.beforeEach` and pass `to`, `from` and `next()` params to the function
     router.beforeEach(
       (to, from, next) => beforeEach(to, from, next)
     )
+  } else {
+    router.beforeEach(
+      (to, from) => action('CHANGED')(to, from)
+    )
   }
 }
+*/
 
 function initialRoute (router: Router, initialRoute: RouteLocationRaw) {
   router.replace(initialRoute || '/')
@@ -60,7 +66,9 @@ export const withVueRouter = (
       /* setup router guards */
       /*
        ! BUG: This causes the beforeEach events to fire multiple times if you click on multiple stories
-       --- TRY PASSING STORY ID TO ROUTES / ROUTER-LINKS TO MAKE STORY ROUTES ENTIRELY UNIQUE ---
+       this is because `vue-router` is technically only initialised once, and shared across stories, 
+       so each new story add its route guards and this results it multiple route guards applied to each route
+       ! BUG: to fix we'll need to clear/destroy the previous router between stories (though haven't found how to do this)
        routerGuardFn(router, options?.beforeEach)
       */
 
@@ -71,12 +79,14 @@ export const withVueRouter = (
       initialRoute(router, options?.initialRoute)
     } else {
       /* reset routes (remove old / add new) */
-      resetRoutes(existingRouter, routes)
+      resetRoutes(existingRouter, routes, context.id)
 
       /* setup router guards */
       /*
        ! BUG: This causes the beforeEach events to fire multiple times if you click on multiple stories
-       --- TRY PASSING STORY ID TO ROUTES / ROUTER-LINKS TO MAKE STORY ROUTES ENTIRELY UNIQUE ---
+       this is because `vue-router` is technically only initialised once, and shared across stories, 
+       so each new story add its route guards and this results it multiple route guards applied to each route
+       ! BUG: to fix we'll need to clear/destroy the previous router between stories (though haven't found how to do this)
        routerGuardFn(existingRouter, options?.beforeEach)
       */
 
