@@ -22,6 +22,10 @@ jobs:
 
       - name: Clean install dependencies
         run: yarn install --frozen-lockfile
+     
+     - name: Yarn Build
+        run: |
+          yarn build
 
       - name: Build Storybook
         run: |
