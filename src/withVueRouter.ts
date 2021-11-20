@@ -79,7 +79,7 @@ export const withVueRouter = (
       initialRoute(router, options?.initialRoute)
     } else {
       /* reset routes (remove old / add new) */
-      resetRoutes(existingRouter, routes, context.id)
+      resetRoutes(existingRouter, routes)
 
       /* setup router guards */
       /*
