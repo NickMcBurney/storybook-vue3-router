@@ -1,10 +1,24 @@
+# v2.0.1 (Sat Nov 20 2021)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/NickMcBurney/storybook-vue3-router into main ([@NickMcBurney](https://github.com/NickMcBurney))
+- skip ci - README file location ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### Authors: 1
+
+- Nick McBurney ([@NickMcBurney](https://github.com/NickMcBurney))
+
+---
+
 # v2.0.0 (Sat Nov 20 2021)
 
 #### 💥 Breaking Change
-
+- Different Routes for Different Stories Requires Page Refresh [#7](https://github.com/NickMcBurney/storybook-vue3-router/issues/7) ([@NickMcBurney](https://github.com/NickMcBurney))
 
 #### 🐛 Bug Fix
 
+- Can't specify initial route [#10](https://github.com/NickMcBurney/storybook-vue3-router/issues/10) ([@NickMcBurney](https://github.com/NickMcBurney))
 - yarn 1.x [#11](https://github.com/NickMcBurney/storybook-vue3-router/pull/11) ([@NickMcBurney](https://github.com/NickMcBurney))
 
 #### ⚠️ Pushed to `main`
