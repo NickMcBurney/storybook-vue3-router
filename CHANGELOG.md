@@ -1,3 +1,23 @@
+# v2.0.0 (Sat Nov 20 2021)
+
+#### 💥 Breaking Change
+
+
+#### 🐛 Bug Fix
+
+- yarn 1.x [#11](https://github.com/NickMcBurney/storybook-vue3-router/pull/11) ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### ⚠️ Pushed to `main`
+
+- node version upgrade ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### Authors: 2
+
+- Automated code reviews ([@code-factor](https://github.com/code-factor))
+- Nick McBurney ([@NickMcBurney](https://github.com/NickMcBurney))
+
+---
+
 # v1.0.8 (Sat Nov 20 2021)
 
 #### ⚠️ Pushed to `main`
