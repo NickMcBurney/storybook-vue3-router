@@ -50,7 +50,6 @@
     "@storybook/vue3": "^6.3.12",
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
-    "babel-preset-minify": "^0.5.1",
     "boxen": "^5.0.1",
     "concurrently": "^6.2.0",
     "dedent": "^0.7.0",
