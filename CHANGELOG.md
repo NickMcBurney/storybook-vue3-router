@@ -1,3 +1,15 @@
+# v1.0.8 (Sat Nov 20 2021)
+
+#### ⚠️ Pushed to `main`
+
+- Delete build-storybook.yml ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### Authors: 1
+
+- Nick McBurney ([@NickMcBurney](https://github.com/NickMcBurney))
+
+---
+
 # v1.0.7 (Sat Nov 20 2021)
 
 #### 🐛 Bug Fix
