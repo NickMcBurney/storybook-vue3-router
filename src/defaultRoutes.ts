@@ -1,4 +1,5 @@
 import type { RouteRecordRaw } from "vue-router";
+import { action } from '@storybook/addon-actions';
 
 const Home = {
   template: `
@@ -30,11 +31,13 @@ export const defaultRoutes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    component: Home,
+    beforeEnter: (to, from) => action('beforeEnter')({ to: to.fullPath, from: from.fullPath })
   },
   {
     path: '/about',
     name: 'about',
-    component: About
+    component: About,
+    beforeEnter: (to, from) => action('beforeEnter')({ to: to.fullPath, from: from.fullPath })
   }
 ]

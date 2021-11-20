@@ -33,22 +33,21 @@
     "build:watch": "concurrently \"yarn buildBabel:esm -- --watch\" \"yarn buildTsc -- --watch\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
-    "start": "concurrently \"yarn build:watch\" \"yarn storybook -- --no-manager-cache --quiet\"",
+    "dev": "concurrently \"yarn storybook -- --no-manager-cache --quiet\" \"yarn build:watch\"",
     "build-storybook": "build-storybook",
-    "prerelease": "zx scripts/prepublish-checks.mjs",
     "release": "yarn build && auto shipit",
     "eject-ts": "zx scripts/eject-typescript.mjs"
   },
   "dependencies": {
-    "vue-router": "^4.0.11"
+    "vue-router": "4.x"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.13.0",
-    "@storybook/addon-essentials": "^6.3.6",
-    "@storybook/vue3": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/vue3": "^6.3.12",
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
     "boxen": "^5.0.1",
@@ -84,5 +83,6 @@
       "vue"
     ],
     "icon": "https://github.com/NickMcBurney/storybook-vue3-router/blob/main/vue-logo.png?raw=true"
-  }
+  },
+  "packageManager": "yarn@3.1.0"
 }
