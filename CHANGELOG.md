@@ -1,3 +1,20 @@
+# v1.0.7 (Sat Nov 20 2021)
+
+#### 🐛 Bug Fix
+
+- skip ci: storybook build update [#9](https://github.com/NickMcBurney/storybook-vue3-router/pull/9) ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### ⚠️ Pushed to `main`
+
+- tidy storybook yaml ([@NickMcBurney](https://github.com/NickMcBurney))
+- skip ci: adding space in storybook action ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### Authors: 1
+
+- Nick McBurney ([@NickMcBurney](https://github.com/NickMcBurney))
+
+---
+
 # v1.0.6 (Fri Nov 19 2021)
 
 #### ⚠️ Pushed to `main`
