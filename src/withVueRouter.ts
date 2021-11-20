@@ -66,7 +66,7 @@ export const withVueRouter = (
       /* setup router guards */
       /*
        ! BUG: This causes the beforeEach events to fire multiple times if you click on multiple stories
-       this is because `vue-router` is technically only initialised once, and shared across stories, 
+       this is because `vue-router` is technically only initialised once, and shared across stories,
        so each new story add its route guards and this results it multiple route guards applied to each route
        ! BUG: to fix we'll need to clear/destroy the previous router between stories (though haven't found how to do this)
        routerGuardFn(router, options?.beforeEach)
@@ -84,7 +84,7 @@ export const withVueRouter = (
       /* setup router guards */
       /*
        ! BUG: This causes the beforeEach events to fire multiple times if you click on multiple stories
-       this is because `vue-router` is technically only initialised once, and shared across stories, 
+       this is because `vue-router` is technically only initialised once, and shared across stories,
        so each new story add its route guards and this results it multiple route guards applied to each route
        ! BUG: to fix we'll need to clear/destroy the previous router between stories (though haven't found how to do this)
        routerGuardFn(existingRouter, options?.beforeEach)
