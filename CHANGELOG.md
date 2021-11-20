@@ -1,3 +1,17 @@
+# v2.0.2 (Sat Nov 20 2021)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/NickMcBurney/storybook-vue3-router into main ([@NickMcBurney](https://github.com/NickMcBurney))
+- skip ci: clean devDependencies ([@NickMcBurney](https://github.com/NickMcBurney))
+- Update CHANGELOG.md ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### Authors: 1
+
+- Nick McBurney ([@NickMcBurney](https://github.com/NickMcBurney))
+
+---
+
 # v2.0.1 (Sat Nov 20 2021)
 
 #### ⚠️ Pushed to `main`
