@@ -23,6 +23,7 @@ yarn add --dev storybook-vue3-router
 
 ### Use in your stories
 The default setup will create a `vue-router` instance, with 2 routes (`/` and `/about`) - these can be reviewed in the [defaultRoutes.ts](https://github.com/NickMcBurney/storybook-vue3-router/blob/main/src/defaultRoutes.ts) file.
+
 ```typescript
 /* import storybook-vue3-router */
 import vueRouter from 'storybook-vue3-router'
@@ -119,7 +120,7 @@ Default.decorators = [
 
 See [the examples folder](https://github.com/NickMcBurney/storybook-vue3-router/tree/main/examples) for more advanced usage.
 
-### Decorator Parameters rwd
+### Decorator Parameters
 ```typescript
 
 function vueRouter(routes: RouteRecordRaw[], options?: { initialRoute?: string })
@@ -137,3 +138,9 @@ vueRouter(customRoutes, (to, from) => action('ROUTE CHANGED')({ to: to, from: fr
 vueRouter(customRoutes, { initialRoute?: string })
 ```
 If you were previously using v1 with router guards in the second parameter, these will need to be refactored to use the [route specific router guards](#custom-routes-with-guards).
+
+**Why was `beforeEach` router guard removed from options?**
+
+After resolving [this issue](https://github.com/NickMcBurney/storybook-vue3-router/issues/7), to enable multiple stories to be created using different route setups, it was noticed that this caused the `beforeEach` function to be added on every route. For example every time you click a different story the new `beforeEach` hook is added - but previous ones are not removed, this results in multiple guards firing on stories unrelated to the 'active' story.
+
+<!--There is an issue raised here to look into fixing this bug and adding `beforeEach` as an option within the options param e.g. `options?: { initialRoute?: string, beforeEach?: NavigationGuard }`-->
