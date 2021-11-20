@@ -84,5 +84,5 @@
     ],
     "icon": "https://github.com/NickMcBurney/storybook-vue3-router/blob/main/vue-logo.png?raw=true"
   },
-  "packageManager": "yarn@3.1.0"
+  "packageManager": "yarn@1.22.17"
 }

@@ -5,3 +5,4 @@ build-storybook.log
 .DS_Store
 .env
 *.tgz
+.yarn/releases/yarn-1.22.17.cjs
