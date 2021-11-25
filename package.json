@@ -9,7 +9,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/NickMcBurney/storybook-vue-router"
+    "url": "https://github.com/NickMcBurney/storybook-vue3-router"
   },
   "author": "Nick McBurney",
   "license": "MIT",
@@ -47,6 +47,7 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.13.0",
     "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addons": "^6.3.12",
     "@storybook/vue3": "^6.3.12",
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
