@@ -1,3 +1,15 @@
+# v2.1.0 (Thu Nov 25 2021)
+
+#### 🚀 Enhancement
+
+- Features/beforeEach() global guards [#14](https://github.com/NickMcBurney/storybook-vue3-router/pull/14) ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### Authors: 1
+
+- Nick McBurney ([@NickMcBurney](https://github.com/NickMcBurney))
+
+---
+
 # v2.0.2 (Sat Nov 20 2021)
 
 #### ⚠️ Pushed to `main`
