@@ -55,10 +55,10 @@ function resetRoutes (router: Router, newRoutes: RouteRecordRaw[]): void {
  * Add a vue router instance to Storybook stories
  * @param routes (optional) custom routes for story
  * @param options (optional) custom options
- * 
+ *
  * @remarks
- * 
- * If there is a previously initialized story using vue-router and you wish to use `beforeEach` to apply global router guards via `options` param, 
+ *
+ * If there is a previously initialized story using vue-router and you wish to use `beforeEach` to apply global router guards via `options` param,
  * we must reload the story in order to apply the global route guards, this can have a minor performance impact.
  */
 export const withVueRouter = (
@@ -70,7 +70,7 @@ export const withVueRouter = (
   name: 'withVueRouter',
   parameterName: 'withVueRouter',
 
-  wrapper: (storyFn: StoryFn, context: StoryContext) => {   
+  wrapper: (storyFn: StoryFn, context: StoryContext) => {
     /* setup router var */
     let router
 
