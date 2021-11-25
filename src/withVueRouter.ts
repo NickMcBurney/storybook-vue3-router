@@ -1,39 +1,46 @@
 
 import { app } from "@storybook/vue3";
 import { makeDecorator } from "@storybook/addons";
+import { StoryFn, StoryContext } from "@storybook/addons/dist/ts3.9/types";
 
 import {
-  Router,
   createRouter,
   createWebHashHistory,
+  /* types */
+  Router,
   RouteRecordRaw,
   NavigationGuard,
-  RouteLocationRaw
+  RouteLocationRaw,
+  RouteRecordNormalized
 } from "vue-router";
 
 import { defaultRoutes } from './defaultRoutes'
 
-/* NOT USED - see bug notes in `withVueRouter()`
-function routerGuardFn (router: Router, beforeEach?: NavigationGuard) {
+function globalRouterGuardFn (router: Router, beforeEach?: NavigationGuard, forceReload = false): void {
   if (typeof beforeEach === 'function') {
-    // fire `beforeEach` param on `router.beforeEach` and pass `to`, `from` and `next()` params to the function
+    /**
+     * force reload in order to reset router and apply global beforeEach()
+     * this is only required if the router has been initialized previously
+     * TODO: can this be made less hacky?
+    */
+    if (forceReload) {
+      router.go(0)
+      return
+    }
+    // add `beforeEach` param on `router.beforeEach` and pass `to`, `from` and `next()` params to the function
     router.beforeEach(
       (to, from, next) => beforeEach(to, from, next)
     )
-  } else {
-    router.beforeEach(
-      (to, from) => action('CHANGED')(to, from)
-    )
   }
 }
-*/
 
-function initialRoute (router: Router, initialRoute: RouteLocationRaw) {
+
+function initialRoute (router: Router, initialRoute: RouteLocationRaw): void {
   router.replace(initialRoute || '/')
 }
 
-function resetRoutes (router: Router, newRoutes: RouteRecordRaw[]) {
-  const oldRoutes: Array<RouteRecordRaw> = router.getRoutes()
+function resetRoutes (router: Router, newRoutes: RouteRecordRaw[]): void {
+  const oldRoutes: Array<RouteRecordNormalized> = router.getRoutes()
   /* remove previously generated routes */
   oldRoutes.forEach((route) => {
     router.removeRoute(route.name)
@@ -44,6 +51,16 @@ function resetRoutes (router: Router, newRoutes: RouteRecordRaw[]) {
   })
 }
 
+/**
+ * Add a vue router instance to Storybook stories
+ * @param routes (optional) custom routes for story
+ * @param options (optional) custom options
+ *
+ * @remarks
+ *
+ * If there is a previously initialized story using vue-router and you wish to use `beforeEach` to apply global router guards via `options` param,
+ * we must reload the story in order to apply the global route guards, this can have a minor performance impact.
+ */
 export const withVueRouter = (
   /* optional: routes param - uses `defaultRoutes` if not provided */
   routes = defaultRoutes,
@@ -53,50 +70,40 @@ export const withVueRouter = (
   name: 'withVueRouter',
   parameterName: 'withVueRouter',
 
-  wrapper: (storyFn, context) => {
-    const existingRouter = app.config.globalProperties.$router
+  wrapper: (storyFn: StoryFn, context: StoryContext) => {
+    /* setup router var */
+    let router
 
+    /* check if there is an existing router */
+    const existingRouter = app.config.globalProperties.$router
     if (!existingRouter) {
       /* create vue router */
-      const router = createRouter({
+      router = createRouter({
         history: createWebHashHistory(),
         routes
       });
       
-      /* setup router guards */
-      /*
-       ! BUG: This causes the beforeEach events to fire multiple times if you click on multiple stories
-       this is because `vue-router` is technically only initialised once, and shared across stories,
-       so each new story add its route guards and this results it multiple route guards applied to each route
-       ! BUG: to fix we'll need to clear/destroy the previous router between stories (though haven't found how to do this)
-       routerGuardFn(router, options?.beforeEach)
-      */
+      /* setup optional global router guards */
+      globalRouterGuardFn(router, options?.beforeEach)
 
       /* tell storybook to use vue router */
       app.use(router)
-
-      /* go to initial route */
-      initialRoute(router, options?.initialRoute)
     } else {
+      /* set router to value of existing router */
+      router = existingRouter
+
       /* reset routes (remove old / add new) */
-      resetRoutes(existingRouter, routes)
+      resetRoutes(router, routes)
 
-      /* setup router guards */
-      /*
-       ! BUG: This causes the beforeEach events to fire multiple times if you click on multiple stories
-       this is because `vue-router` is technically only initialised once, and shared across stories,
-       so each new story add its route guards and this results it multiple route guards applied to each route
-       ! BUG: to fix we'll need to clear/destroy the previous router between stories (though haven't found how to do this)
-       routerGuardFn(existingRouter, options?.beforeEach)
-      */
-
-      /* go to initial route */
-      initialRoute(existingRouter, options?.initialRoute)
+      /* setup optional global router guards (if provided and there is an existing router this will force a page reload) */
+      globalRouterGuardFn(existingRouter, options?.beforeEach, true)
     }
+
+    /* go to initial route */
+    initialRoute(router, options?.initialRoute)
 
     /* return the storybook story */
     return storyFn(context);
-  
   }
 })
   

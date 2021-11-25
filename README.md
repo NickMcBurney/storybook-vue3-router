@@ -94,6 +94,7 @@ Default.decorators = [
 
 ### Custom Routes (with inital route)
 By default the decorator will default the starting route to `/`, if you want to change this you can pass as a parametor to the decorator
+
 ```typescript
 /* define our custom routes */
 const customRoutes = [
@@ -123,7 +124,7 @@ See [the examples folder](https://github.com/NickMcBurney/storybook-vue3-router/
 ### Decorator Parameters
 ```typescript
 
-function vueRouter(routes: RouteRecordRaw[], options?: { initialRoute?: string })
+function vueRouter(routes: RouteRecordRaw[], options?: { initialRoute?: string, beforeEach?: NavigationGuard })
 ```
 
 ## v2.x Migration
@@ -134,13 +135,22 @@ The migration from v1 brings some breaking changes:
 // in this example the guard is used to fire a storybook action with `to` and `from` router objects
 vueRouter(customRoutes, (to, from) => action('ROUTE CHANGED')({ to: to, from: from })) // LEGACY
 
-// v2.x - 2nd param is used to pass additional options to the decorator
-vueRouter(customRoutes, { initialRoute?: string })
+// v2.1 - 2nd param is used to pass additional options to the decorator
+vueRouter(customRoutes, {
+  /* add global beforeEach guard */
+  beforeEach: (to, from) => action('ROUTE CHANGED')({ to: to, from: from })
+})
 ```
-If you were previously using v1 with router guards in the second parameter, these will need to be refactored to use the [route specific router guards](#custom-routes-with-guards).
+If you were previously using v1 with router guards in the second parameter, these will need to be refactored to use the [route specific router guards](#custom-routes-with-guards) _(recommended)_ or you can pass your global route guards using the `beforeEach` option.
 
-**Why was `beforeEach` router guard removed from options?**
+**_v2.0 DOES NOT HAVE THIS `beforeEach` option, please upgrade to v2.1_**
 
-After resolving [this issue](https://github.com/NickMcBurney/storybook-vue3-router/issues/7), to enable multiple stories to be created using different route setups, it was noticed that this caused the `beforeEach` function to be added on every route. For example every time you click a different story the new `beforeEach` hook is added - but previous ones are not removed, this results in multiple guards firing on stories unrelated to the 'active' story.
+### ⚠️ Warning:
+
+When using the global `beforeEach` option, if there is an existing story also using this decorator then we must force a page reload in order to setup the specific story router guard and this has a minor UX / performance impact. Checkout the [demo](https://storybook-vue3-router.netlify.app/) for an example of this: README > With Router Guards > Global Guard - when clicking the 'Global Guard' link you will notice the page is refreshed to apply global guards (due to previously existing stories).
+
+This will not be an issue if you are using this decorator for just one story.
+
+After resolving [this issue](https://github.com/NickMcBurney/storybook-vue3-router/issues/7), to enable multiple stories to be created using different route setups, it was noticed that this caused the global `beforeEach` function to be added on every route. For example every time you click a different story the new `beforeEach` hook is added - but previous ones are not removed, this results in multiple guards firing on stories unrelated to the 'active' story.
 
 <!--There is an issue raised here to look into fixing this bug and adding `beforeEach` as an option within the options param e.g. `options?: { initialRoute?: string, beforeEach?: NavigationGuard }`-->
