@@ -33,7 +33,7 @@ const Auth = () => {
     
     if (meta?.authRequired && loggedIn.value !== true) {
       action('auth required route blocked')({ to: to.path })
-      next({ name: 'home', params: { blocked: true } })
+      next({ name: 'login', params: { blocked: true } })
     } else {
       if (meta?.authRequired) {
         action('auth required route passed')({ isAuthenticated: loggedIn.value })
@@ -48,7 +48,7 @@ const Auth = () => {
 /**
  * COMPONENT TEMPLATES
  */
-const Home = {
+const Login = {
   setup () {
     const { login, logout, router } = Auth()
     const params = computed(() => router.currentRoute.value.params)
@@ -56,7 +56,7 @@ const Home = {
   },
   template: `
     <div>
-      <h2>Home</h2>
+      <h2>Login</h2>
       <p>Is Logged-In: {{ loggedIn }}</p>
       <p v-if="params.blocked && !loggedIn">
         You can't access the dashboard whilst not logged in.
@@ -115,17 +115,44 @@ PerRouteGuard.decorators = [
   vueRouter(
     [
       {
-        path: '/',
-        name: 'home',
-        component: Home
+        path: '/login',
+        name: 'login',
+        component: Login
       },
       {
         path: '/dash',
         name: 'dash',
         component: Dash,
         meta: { authRequired: true },
+        /* add route specific beforeEnter guard */
         beforeEnter: Auth().routerGuard
       }
-    ]
+    ], {
+      initialRoute: '/login'
+    }
+  )
+]
+
+export const GlobalGuard = AuthGuardTemplate.bind({})
+GlobalGuard.decorators = [
+  vueRouter(
+    [
+      {
+        path: '/login',
+        name: 'login',
+        component: Login
+      },
+      {
+        path: '/dash',
+        name: 'dash',
+        component: Dash,
+        meta: { authRequired: true },
+      }
+    ],
+    {
+      initialRoute: '/login',
+      /* add global beforeEach guard */
+      beforeEach: Auth().routerGuard
+    }
   )
 ]
