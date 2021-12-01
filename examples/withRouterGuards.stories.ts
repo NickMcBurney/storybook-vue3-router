@@ -68,7 +68,7 @@ const Login = {
       </p>
 
       <div style="display: flex; gap: 1em">
-        <router-link to="/">Home</router-link>
+        <router-link to="/login">Home</router-link>
         <router-link to="/dash">View dashboard</router-link>
       </div>
     </div>
