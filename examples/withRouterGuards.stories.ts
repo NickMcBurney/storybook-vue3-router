@@ -21,7 +21,7 @@ const Auth = () => {
 
   const logout = () => {
     loggedIn.value = false
-    router.push('/')
+    router.push('/login')
   }
 
   const routerGuard = (to, from, next) => {
@@ -88,7 +88,7 @@ const Dash = {
       <p><button @click="logout()" class="grey">Logout</button></p>
 
       <div style="display: flex; gap: 1em">
-        <router-link to="/">Home</router-link>
+        <router-link to="/login">Home</router-link>
       </div>
     </div>
   `
