@@ -103,7 +103,7 @@ export const withVueRouter = (
     initialRoute(router, options?.initialRoute)
 
     /* return the storybook story */
-    return storyFn(context);
+    return storyFn(context, null);
   }
 })
   
