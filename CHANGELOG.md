@@ -1,3 +1,15 @@
+# v2.1.1 (Mon Dec 06 2021)
+
+#### 🐛 Bug Fix
+
+- upgrading storybook [#17](https://github.com/NickMcBurney/storybook-vue3-router/pull/17) ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### Authors: 1
+
+- Nick McBurney ([@NickMcBurney](https://github.com/NickMcBurney))
+
+---
+
 # v2.1.0 (Thu Nov 25 2021)
 
 #### 🚀 Enhancement
