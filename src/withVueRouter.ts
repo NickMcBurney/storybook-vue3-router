@@ -1,7 +1,7 @@
 
 import { app } from "@storybook/vue3";
 import { makeDecorator } from "@storybook/addons";
-import { StoryFn, StoryContext } from "@storybook/addons/dist/ts3.9/types";
+import { LegacyStoryFn, StoryContext } from "@storybook/addons/dist/ts3.9/types";
 
 import {
   createRouter,
