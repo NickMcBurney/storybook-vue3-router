@@ -1,7 +1,7 @@
 
 import { app } from "@storybook/vue3";
 import { makeDecorator } from "@storybook/addons";
-import { StoryFn, StoryContext } from "@storybook/addons/dist/ts3.9/types";
+import { LegacyStoryFn, StoryContext } from "@storybook/addons/dist/ts3.9/types";
 
 import {
   createRouter,
@@ -70,7 +70,7 @@ export const withVueRouter = (
   name: 'withVueRouter',
   parameterName: 'withVueRouter',
 
-  wrapper: (storyFn: StoryFn, context: StoryContext) => {
+  wrapper: (storyFn: LegacyStoryFn, context: StoryContext) => {
     /* setup router var */
     let router
 
