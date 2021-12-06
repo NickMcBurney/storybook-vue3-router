@@ -70,7 +70,7 @@ export const withVueRouter = (
   name: 'withVueRouter',
   parameterName: 'withVueRouter',
 
-  wrapper: (storyFn: StoryFn, context: StoryContext) => {
+  wrapper: (storyFn: LegacyStoryFn, context: StoryContext) => {
     /* setup router var */
     let router
 
