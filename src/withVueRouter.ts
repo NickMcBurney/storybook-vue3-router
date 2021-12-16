@@ -76,7 +76,8 @@ export const withVueRouter = (
 
     /* check if there is an existing router */
     const existingRouter = app.config.globalProperties.$router
-    if (!existingRouter) {
+    const existingRoute = app.config.globalProperties.$route
+    if ((!existingRouter || existingRouter.isMocked === true) && (!existingRoute || existingRoute.isMocked === true)) {
       /* create vue router */
       router = createRouter({
         history: createWebHashHistory(),
@@ -94,7 +95,6 @@ export const withVueRouter = (
 
       /* reset routes (remove old / add new) */
       resetRoutes(router, routes)
-
       /* setup optional global router guards (if provided and there is an existing router this will force a page reload) */
       globalRouterGuardFn(existingRouter, options?.beforeEach, true)
     }
