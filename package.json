@@ -31,12 +31,12 @@
     "prebuild": "yarn clean",
     "build": "concurrently \"yarn buildBabel\" \"yarn buildTsc\"",
     "build:watch": "concurrently \"yarn buildBabel:esm -- --watch\" \"yarn buildTsc -- --watch\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "dev": "concurrently \"yarn storybook -- --no-manager-cache --quiet\" \"yarn build:watch\"",
     "build-storybook": "build-storybook",
     "release": "yarn build && auto shipit",
-    "eject-ts": "zx scripts/eject-typescript.mjs"
+    "eject-ts": "zx scripts/eject-typescript.mjs",
+    "test": "jest ./tests/storybook.test.js"
   },
   "dependencies": {
     "vue-router": "4.x"
@@ -46,16 +46,19 @@
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.13.0",
-    "@storybook/addon-essentials": "^6.4.3",
-    "@storybook/addons": "^6.4.3",
-    "@storybook/vue3": "^6.4.3",
+    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/addon-storyshots": "^6.4.9",
+    "@storybook/addons": "^6.4.9",
+    "@storybook/vue3": "^6.4.9",
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
     "concurrently": "^6.2.0",
+    "jest": "^27.4.5",
     "prettier": "^2.3.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.2.4",
     "vue": "^3.2.4",
+    "vue-jest": "5.0.0-alpha.10",
     "zx": "^1.14.1"
   },
   "peerDependencies": {
