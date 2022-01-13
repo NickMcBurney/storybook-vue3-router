@@ -15,12 +15,13 @@
   "license": "MIT",
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
+  "exports": {
+    "require": "./dist/cjs/index.js",
+    "import": "./dist/esm/index.js"
+  },
   "types": "dist/ts/index.d.ts",
   "files": [
-    "dist/**/*",
-    "README.md",
-    "*.js",
-    "*.d.ts"
+    "dist/**/*"
   ],
   "scripts": {
     "clean": "rimraf ./dist",
@@ -46,12 +47,13 @@
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.13.0",
-    "@storybook/addon-essentials": "^6.4.3",
-    "@storybook/addons": "^6.4.3",
-    "@storybook/vue3": "^6.4.3",
+    "@storybook/addon-essentials": "^6.4.9",
+    "@storybook/addons": "^6.4.9",
+    "@storybook/vue3": "^6.4.9",
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
     "concurrently": "^6.2.0",
+    "jest": "^27.4.5",
     "prettier": "^2.3.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.2.4",
