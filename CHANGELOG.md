@@ -1,3 +1,19 @@
+# v2.2.0 (Thu Jan 13 2022)
+
+#### 🚀 Enhancement
+
+- Adding Mock Router Decorator [#18](https://github.com/NickMcBurney/storybook-vue3-router/pull/18) ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### 📝 Documentation
+
+- Args example [#16](https://github.com/NickMcBurney/storybook-vue3-router/pull/16) ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### Authors: 1
+
+- Nick McBurney ([@NickMcBurney](https://github.com/NickMcBurney))
+
+---
+
 # v2.1.1 (Mon Dec 06 2021)
 
 #### 🐛 Bug Fix
