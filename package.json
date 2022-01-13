@@ -15,12 +15,13 @@
   "license": "MIT",
   "main": "dist/esm/index.js",
   "module": "dist/esm/index.js",
+  "exports": {
+    "require": "./dist/cjs/index.js",
+    "import": "./dist/esm/index.js"
+  },
   "types": "dist/ts/index.d.ts",
   "files": [
-    "dist/**/*",
-    "README.md",
-    "*.js",
-    "*.d.ts"
+    "dist/**/*"
   ],
   "scripts": {
     "clean": "rimraf ./dist",
