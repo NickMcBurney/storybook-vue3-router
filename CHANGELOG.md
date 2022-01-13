@@ -1,3 +1,15 @@
+# v2.2.1 (Thu Jan 13 2022)
+
+#### 🐛 Bug Fix
+
+- Adding `exports` to package.json [#20](https://github.com/NickMcBurney/storybook-vue3-router/pull/20) ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### Authors: 1
+
+- Nick McBurney ([@NickMcBurney](https://github.com/NickMcBurney))
+
+---
+
 # v2.2.0 (Thu Jan 13 2022)
 
 #### 🚀 Enhancement
