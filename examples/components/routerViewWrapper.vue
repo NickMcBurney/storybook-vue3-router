@@ -25,6 +25,7 @@ export default defineComponent({
   },
   setup () {
     const route = useRoute()
+
     const fullPath = computed(() => route.fullPath )
 
     return { fullPath }
@@ -34,23 +35,6 @@ export default defineComponent({
 
 
 <style>
-.my-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 960px;
-  align-items: center;
-  /* justify-content: center; */
-  font-family: "Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif
-}
-
-.intro {
-  flex-basis: 100%;
-}
-
-h1 {
-  flex-basis: 100%;
-}
-
 /* router transition CSS */
 .slide-fade-enter-active {
   transition: all .5s .5s ease-out;
