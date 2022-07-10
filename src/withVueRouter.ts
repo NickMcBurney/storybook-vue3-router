@@ -65,7 +65,7 @@ function resetRoutes (router: Router, newRoutes: RouteRecordRaw[]): void {
 export const withVueRouter = (
   /* optional: routes param - uses `defaultRoutes` if not provided */
   routes = defaultRoutes,
-  /* optional: router options - used to pass vue-router `createRouter` options, `initialRoute` value and `beforeEach()` navigation guard methods */
+  /* optional: router options - used to pass `initialRoute` value, `beforeEach()` navigation guard methods and vue-router `createRouter` options */
   options?: { initialRoute?: string, beforeEach?: NavigationGuard, vueRouterOptions?: RouterOptions },
 ) => makeDecorator({
   name: 'withVueRouter',
