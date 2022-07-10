@@ -1,3 +1,15 @@
+# v2.3.0 (Sun Jul 10 2022)
+
+#### 🚀 Enhancement
+
+- Adding vue-router options param to decorator [#24](https://github.com/NickMcBurney/storybook-vue3-router/pull/24) ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### Authors: 1
+
+- Nick McBurney ([@NickMcBurney](https://github.com/NickMcBurney))
+
+---
+
 # v2.2.1 (Thu Jan 13 2022)
 
 #### 🐛 Bug Fix
