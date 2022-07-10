@@ -60,3 +60,23 @@ WithInitialRoute.decorators = [
     initialRoute: '/about'
   })
 ]
+
+/* STORYBOOK EXPORT -- WITH VUE ROUTER OPTIONS */
+const VueRouteOptionsTemplate = () => ({
+  components: { 'RouterViewWrapper': routerViewWrapper },
+  template: `
+    <RouterViewWrapper title="Storybook Vue 3 Router with Vue Router Options">
+      <router-view></router-view>
+    </RouterViewWrapper>
+  `
+})
+
+export const WithVueRouteOptions = VueRouteOptionsTemplate.bind({})
+WithVueRouteOptions.decorators = [
+  vueRouter(undefined, {
+    initialRoute: '/about',
+    vueRouterOptions: {
+      linkActiveClass: 'activeLink'
+    }
+  })
+]

@@ -69,4 +69,8 @@ button.grey {
 a {
   color: #1da7fd;
 }
+
+.activeLink {
+  color: red;
+}
 </style>

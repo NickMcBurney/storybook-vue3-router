@@ -92,8 +92,8 @@ Default.decorators = [
 ]
 ```
 
-### Custom Routes (with inital route)
-By default the decorator will default the starting route to `/`, if you want to change this you can pass as a parametor to the decorator
+### Custom Routes (with initial route)
+By default the decorator will default the starting route to `/`, if you want to change this you can pass as a paramtor to the decorator
 
 ```typescript
 /* define our custom routes */
@@ -115,6 +115,23 @@ Default.decorators = [
   /* pass initialRoute to the decorator */
   vueRouter(customRoutes, {
     initialRoute: '/intro'
+  })
+]
+```
+
+### With Router Options
+We can pass [Vue Router options](https://router.vuejs.org/api/index.html#history) into our decorator.
+
+```typescript
+/* adding storybook-vue3-router decorator */
+Default.decorators = [
+  /* pass vueRouterOptions to the decorator */
+  vueRouter(undefined, {
+    vueRouterOptions: {
+      linkActiveClass: 'my-active-class',
+      linkExactActiveClass: 'my-exact-active-class'
+      ...etc
+    }
   })
 ]
 ```
