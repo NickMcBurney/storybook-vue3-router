@@ -1,3 +1,15 @@
+# v2.3.1 (Sat Jul 16 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Create CONTRIBUTING.md ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### Authors: 1
+
+- Nick McBurney ([@NickMcBurney](https://github.com/NickMcBurney))
+
+---
+
 # v2.3.0 (Sun Jul 10 2022)
 
 #### 🚀 Enhancement
