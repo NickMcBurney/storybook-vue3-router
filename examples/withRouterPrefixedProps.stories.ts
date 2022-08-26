@@ -101,5 +101,5 @@ UsernamePrefix.decorators = [
         }
       ]
     }
-  ])
+  ], { initialRoute: '/username/@nick/' })
 ]
