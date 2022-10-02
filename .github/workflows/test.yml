@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    # get netlify preview URL
+    - uses: voorhoede/get-netlify-url@v2
+      id: get-netlify-url
+    # start node scripts
     - uses: actions/setup-node@v2
       with:
         node-version: '16.x'
