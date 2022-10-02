@@ -29,15 +29,3 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           yarn release
-  e2e:
-    name: Run integration tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: voorhoede/get-netlify-url@v2
-        id: get-netlify-url
-      - uses: cypress-io/github-action@v1
-        env:
-          CYPRESS_BASE_URL: ${{ steps.get-netlify-url.outputs.url }}
-        with:
-          wait-on: ${{ steps.get-netlify-url.outputs.url }}
