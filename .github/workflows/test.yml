@@ -16,6 +16,4 @@ jobs:
         run: |
           echo ${{ steps.get-netlify-url.outputs.url }}
           echo "preview url: $steps.get-netlify-url.outputs.url"
-        with:
-          wait-on: ${{ steps.get-netlify-url.outputs.url }}
         
