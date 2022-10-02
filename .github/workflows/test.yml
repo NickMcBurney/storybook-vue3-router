@@ -11,8 +11,11 @@ jobs:
       - uses: actions/checkout@v2
       - uses: voorhoede/get-netlify-url@v2
         id: get-netlify-url
-      - uses: cypress-io/github-action@v1
-        env:
-          CYPRESS_BASE_URL: ${{ steps.get-netlify-url.outputs.url }}
+      - name: Any Name Bash Test Step
+        shell: bash
+        run: |
+          echo ${{ steps.get-netlify-url.outputs.url }}
+          echo "preview url: $steps.get-netlify-url.outputs.url"
         with:
           wait-on: ${{ steps.get-netlify-url.outputs.url }}
+        
