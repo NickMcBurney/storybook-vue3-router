@@ -36,6 +36,7 @@
     "dev": "concurrently \"yarn storybook -- --no-manager-cache --quiet\" \"yarn build:watch\"",
     "build-storybook": "build-storybook",
     "release": "yarn build && auto shipit",
+    "test": "npx playwright test",
     "eject-ts": "zx scripts/eject-typescript.mjs"
   },
   "dependencies": {

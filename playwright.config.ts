@@ -1,6 +1,34 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 
+
+const setBrowsers = () => {
+  const browsers = [
+    {
+      name: 'chromium',
+      use: {
+        ...devices['Desktop Chrome'],
+      },
+    }
+  ]
+
+  if (process.env.CI) {
+    browsers.push({
+      name: 'firefox',
+      use: {
+        ...devices['Desktop Firefox'],
+      },
+    })
+    browsers.push({
+      name: 'webkit',
+      use: {
+        ...devices['Desktop Safari'],
+      },
+    })
+  }
+
+  return browsers
+}
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -44,26 +72,7 @@ const config: PlaywrightTestConfig = {
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'chromium',
-      use: {
-        ...devices['Desktop Chrome'],
-      },
-    },
-
-    {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-      },
-    },
-
-    {
-      name: 'webkit',
-      use: {
-        ...devices['Desktop Safari'],
-      },
-    },
+    ...setBrowsers()
 
     /* Test against mobile viewports. */
     // {

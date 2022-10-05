@@ -21,7 +21,7 @@ jobs:
     - name: Install Playwright
       run: npx playwright install --with-deps
     - name: Run your tests
-      run: npx playwright test
+      run: yarn run test
       env:
         PLAYWRIGHT_TEST_BASE_URL: ${{ steps.get-netlify-url.outputs.url }}
     - name: Upload test results
