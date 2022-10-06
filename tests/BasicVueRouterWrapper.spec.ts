@@ -2,8 +2,6 @@ import { test, expect } from '@playwright/test';
 
 const PLAYWRIGHT_TEST_BASE_URL = process.env.PLAYWRIGHT_TEST_BASE_URL as string || "https://storybook-vue3-router.netlify.app/"
 
-const storyId = 'basic-router-view-wrapper'
-
 test('Basic Route View Wrapper', async ({ page }) => {
   await page.goto(PLAYWRIGHT_TEST_BASE_URL);
 
