@@ -9,3 +9,4 @@ build-storybook.log
 /test-results/
 /playwright-report/
 /playwright/.cache/
+/tests-examples/*
