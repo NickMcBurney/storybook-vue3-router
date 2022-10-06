@@ -32,11 +32,11 @@
     "prebuild": "yarn clean",
     "build": "concurrently \"yarn buildBabel\" \"yarn buildTsc\"",
     "build:watch": "concurrently \"yarn buildBabel:esm -- --watch\" \"yarn buildTsc -- --watch\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "dev": "concurrently \"yarn storybook -- --no-manager-cache --quiet\" \"yarn build:watch\"",
     "build-storybook": "build-storybook",
     "release": "yarn build && auto shipit",
+    "test": "npx playwright test",
     "eject-ts": "zx scripts/eject-typescript.mjs"
   },
   "dependencies": {
@@ -47,6 +47,7 @@
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.13.0",
+    "@playwright/test": "^1.26.1",
     "@storybook/addon-essentials": "^6.4.9",
     "@storybook/addons": "^6.4.9",
     "@storybook/vue3": "^6.4.9",
