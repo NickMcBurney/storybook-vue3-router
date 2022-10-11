@@ -57,8 +57,8 @@ const Login = {
   template: `
     <div>
       <h2>Login</h2>
-      <p>Is Logged-In: {{ loggedIn }}</p>
-      <p v-if="params.blocked && !loggedIn">
+      <p class="login-state">Is Logged-In: {{ loggedIn }}</p>
+      <p v-if="params.blocked && !loggedIn" class="login-warning">
         You can't access the dashboard whilst not logged in.
       </p>
       
