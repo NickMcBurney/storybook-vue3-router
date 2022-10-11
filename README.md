@@ -10,6 +10,8 @@ A Storybook decorator that allows you to use your Vue 3 routing-aware components
 
 If you want to build stories for Vue 3 components using `<router-view>` or `<router-link>` then you need to wrap your stories with `vue-router` this addon will allow for you to easily do this.
 
+There is also a [mocked router decorator](#mock-router) option for users who only need access to `$route` and `$router` properties.
+
 ## How to use
 This decorator works with Storybook's [Component Story Format (CSF)](https://storybook.js.org/docs/vue/api/csf) and [hoisted CSF annotations](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#hoisted-csf-annotations), which is the recommended way to write stories since Storybook 6. It has not been tested with the [storiesOf API](https://github.com/storybookjs/storybook/blob/master/lib/core/docs/storiesOf.md).
 
@@ -141,8 +143,45 @@ See [the examples folder](https://github.com/NickMcBurney/storybook-vue3-router/
 ### Decorator Parameters
 ```typescript
 
-function vueRouter(routes: RouteRecordRaw[], options?: { initialRoute?: string, beforeEach?: NavigationGuard })
+function vueRouter(routes: RouteRecordRaw[], options?: { initialRoute?: string, beforeEach?: NavigationGuard, vueRouterOptions?: RouterOptions })
 ```
+
+## Mock Router
+The full `vue-router` is not always needed - for example if you don't have components using `<router-view>` or `<router-link>` then using the `mockRouter` export may cover your needs (and reduce the imports being used in your project).
+
+### Use `mockRouter` in your stories
+The default setup will create mock `$router` and `$route` from `vue-router`, this allows you to create stories for components using programatic navigation and route based logic.
+
+We can also pass custom options into the `mockRouter` decorator:
+```typescript
+{ 
+  meta?: Array<string>, 
+  params?: Array<string>, 
+  query?: Array<string>
+}
+```
+
+```typescript
+/* import storybook-vue3-router mockRouter */
+import { mockRouter } from 'storybook-vue3-router'
+
+/* ...story setup... */
+
+/* your story export */
+export const Default = Template.bind({})
+
+/* adding storybook-vue3-router mockRouter decorator */
+Default.decorators = [
+  mockRouter({
+    meta: ['some_meta'],
+    params: ['some_param'],
+    query: ['some_query']
+  })
+]
+```
+
+You can see examples of the `mockRouter` in our [storybook demo site](https://storybook-vue3-router.netlify.app/?path=/story/mock-router--default), and our [code examples](https://github.com/NickMcBurney/storybook-vue3-router/tree/main/examples/mockRouter.stories.ts)
+
 
 ## v2.x Migration
 The migration from v1 brings some breaking changes:
