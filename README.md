@@ -141,7 +141,7 @@ See [the examples folder](https://github.com/NickMcBurney/storybook-vue3-router/
 ### Decorator Parameters
 ```typescript
 
-function vueRouter(routes: RouteRecordRaw[], options?: { initialRoute?: string, beforeEach?: NavigationGuard })
+function vueRouter(routes: RouteRecordRaw[], options?: { initialRoute?: string, beforeEach?: NavigationGuard, vueRouterOptions?: RouterOptions })
 ```
 
 ## v2.x Migration
