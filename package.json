@@ -50,6 +50,8 @@
     "@playwright/test": "^1.26.1",
     "@storybook/addon-essentials": "^6.5.15",
     "@storybook/addons": "^6.5.15",
+    "@storybook/builder-webpack5": "^6.5.15",
+    "@storybook/manager-webpack5": "^6.5.15",
     "@storybook/vue3": "^6.5.15",
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
