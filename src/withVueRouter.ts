@@ -12,8 +12,12 @@ import {
   NavigationGuard,
   RouteLocationRaw,
   RouteRecordNormalized,
+  RouteLocationNormalizedLoaded,
   RouterOptions,
 } from "vue-router";
+
+type MockRouter = Router & { isMocked?: boolean }
+type MockRoute = RouteLocationNormalizedLoaded & { isMocked?: boolean }
 
 import { defaultRoutes } from './defaultRoutes'
 
@@ -76,8 +80,8 @@ export const withVueRouter = (
     let router
 
     /* check if there is an existing router */
-    const existingRouter = app.config.globalProperties.$router
-    const existingRoute = app.config.globalProperties.$route
+    const existingRouter = app.config.globalProperties.$router as MockRouter
+    const existingRoute = app.config.globalProperties.$route as MockRoute
     if ((!existingRouter || existingRouter.isMocked === true) && (!existingRoute || existingRoute.isMocked === true)) {
       /* create vue router */
       router = createRouter({
