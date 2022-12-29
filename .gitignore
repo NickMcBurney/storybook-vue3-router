@@ -4,6 +4,7 @@ storybook-static/
 vite-demo/
 build-storybook.log
 .DS_Store
+.yarn
 .env
 *.tgz
 /test-results/
