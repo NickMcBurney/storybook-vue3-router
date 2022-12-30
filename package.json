@@ -52,6 +52,7 @@
     "@storybook/addons": "^7.0.0-beta.17",
     "@storybook/vue3": "^7.0.0-beta.17",
     "@storybook/vue3-webpack5": "7.0.0-beta.17",
+    "@types/node": "18",
     "auto": "^10.3.0",
     "babel-loader": "^8.1.0",
     "concurrently": "^6.2.0",
