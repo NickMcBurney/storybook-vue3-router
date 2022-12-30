@@ -1,7 +1,7 @@
 
-import { app } from "@storybook/vue3";
+import { setup } from "@storybook/vue3";
 import { makeDecorator } from "@storybook/addons";
-import { LegacyStoryFn, StoryContext } from "@storybook/addons/dist/ts3.9/types";
+import type { StoryContext, StoryFn } from '@storybook/types'
 
 import {
   createRouter,
@@ -75,41 +75,43 @@ export const withVueRouter = (
   name: 'withVueRouter',
   parameterName: 'withVueRouter',
 
-  wrapper: (storyFn: LegacyStoryFn, context: StoryContext) => {
-    /* setup router var */
-    let router
+  wrapper: (storyFn: StoryFn, context: StoryContext) => {
+    setup(app => {
+            /* setup router var */
+      let router
 
-    /* check if there is an existing router */
-    const existingRouter = app.config.globalProperties.$router as MockRouter
-    const existingRoute = app.config.globalProperties.$route as MockRoute
-    if ((!existingRouter || existingRouter.isMocked === true) && (!existingRoute || existingRoute.isMocked === true)) {
-      /* create vue router */
-      router = createRouter({
-        history: createWebHashHistory(),
-        routes,
-        ...options?.vueRouterOptions
-      });
-      
-      /* setup optional global router guards */
-      globalRouterGuardFn(router, options?.beforeEach)
+      /* check if there is an existing router */
+      const existingRouter = app.config.globalProperties.$router as MockRouter
+      const existingRoute = app.config.globalProperties.$route as MockRoute
+      if ((!existingRouter || existingRouter.isMocked === true) && (!existingRoute || existingRoute.isMocked === true)) {
+        /* create vue router */
+        router = createRouter({
+          history: createWebHashHistory(),
+          routes,
+          ...options?.vueRouterOptions
+        });
+        
+        /* setup optional global router guards */
+        globalRouterGuardFn(router, options?.beforeEach)
 
-      /* tell storybook to use vue router */
-      app.use(router)
-    } else {
-      /* set router to value of existing router */
-      router = existingRouter
+        /* tell storybook to use vue router */
+        app.use(router)
+      } else {
+        /* set router to value of existing router */
+        router = existingRouter
 
-      /* reset routes (remove old / add new) */
-      resetRoutes(router, routes)
-      /* setup optional global router guards (if provided and there is an existing router this will force a page reload) */
-      globalRouterGuardFn(existingRouter, options?.beforeEach, true)
-    }
+        /* reset routes (remove old / add new) */
+        resetRoutes(router, routes)
+        /* setup optional global router guards (if provided and there is an existing router this will force a page reload) */
+        globalRouterGuardFn(existingRouter, options?.beforeEach, true)
+      }
 
-    /* go to initial route */
-    initialRoute(router, options?.initialRoute)
+      /* go to initial route */
+      initialRoute(router, options?.initialRoute)
 
-    /* return the storybook story */
-    return storyFn(context);
+      /* return the storybook story */
+      return storyFn(context, context);
+    })
   }
 })
   
