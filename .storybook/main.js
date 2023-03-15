@@ -1,11 +1,11 @@
 module.exports = {
-  stories: ["../**/**/*.stories.mdx", "../**/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ["../examples/**/*.stories.mdx", "../examples/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: ["../preset.js", "@storybook/addon-essentials"],
   docs: {
     autodocs: true
   },
   framework: {
-    name: "@storybook/vue3-webpack5",
+    name: "@storybook/vue3-vite",
     options: {}
   }
 };

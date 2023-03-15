@@ -1,26 +1,20 @@
 
-import { setup } from "@storybook/vue3";
-import { makeDecorator } from "@storybook/addons";
-import { action } from '@storybook/addon-actions';
+import { setup } from '@storybook/vue3'
+import { makeDecorator } from '@storybook/preview-api'
+import { action } from '@storybook/addon-actions'
 import type { StoryContext, StoryFn } from '@storybook/types'
 
 import type {
   Router,
   RouteLocationRaw,
   RouteLocationNormalizedLoaded
-} from "vue-router";
+} from 'vue-router'
+
+import { getFromArgs } from './utils'
 
 type MockRouter = Router & { isMocked?: boolean }
 type MockRoute = RouteLocationNormalizedLoaded & { isMocked?: boolean }
-
-function getFromArgs(args: { [key: string]: any }, options: Array<string>) {
-  let filtered : { [key: string]: any } = {}
-  options.forEach((option) => {
-    filtered = { ...filtered, [option]: args[option] }
-  })
-
-  return filtered
-}
+type decoratorType = ReturnType<typeof makeDecorator>
 
 /**
  * Add a vue router instance to Storybook stories
@@ -32,7 +26,7 @@ function getFromArgs(args: { [key: string]: any }, options: Array<string>) {
  * If there is a previously initialized story using vue-router and you wish to use `beforeEach` to apply global router guards via `options` param,
  * we must reload the story in order to apply the global route guards, this can have a minor performance impact.
  */
-export const withMockRouter = (
+export const withMockRouter: decoratorType = (
   options: { meta?: Array<string>, params?: Array<string>, query?: Array<string> }
 ) => makeDecorator({
   name: 'withMockRouter',
@@ -71,8 +65,8 @@ export const withMockRouter = (
     })
 
     /* return the storybook story */
-    return storyFn(context, context);
+    return storyFn(context)
   }
 })
   
-export default withMockRouter;
+export default withMockRouter
