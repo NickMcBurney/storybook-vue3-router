@@ -109,9 +109,9 @@ export const withVueRouter = (
       /* go to initial route */
       initialRoute(router, options?.initialRoute)
 
-      /* return the storybook story */
-      return storyFn(context, context);
     })
+    /* return the storybook story */
+    return storyFn(context, context);
   }
 })
   
