@@ -7,10 +7,7 @@ import {
   createWebHashHistory,
   /* types */
   Router,
-  RouteRecordRaw,
   NavigationGuard,
-  RouteLocationRaw,
-  RouteRecordNormalized,
   RouteLocationNormalizedLoaded,
   RouterOptions,
 } from 'vue-router'
