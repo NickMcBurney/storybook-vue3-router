@@ -6,10 +6,10 @@ import {
   createRouter,
   createWebHashHistory,
   /* types */
-  Router,
-  NavigationGuard,
-  RouteLocationNormalizedLoaded,
-  RouterOptions,
+  type Router,
+  type NavigationGuard,
+  type RouteLocationNormalizedLoaded,
+  type RouterOptions,
 } from 'vue-router'
 
 import { defaultRoutes } from './defaultRoutes'
