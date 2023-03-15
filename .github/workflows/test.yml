@@ -15,10 +15,10 @@ jobs:
     # start node scripts
     - uses: actions/setup-node@v2
       with:
-        node-version: '16.x' 
+        node-version: '16.x'
     - uses: pnpm/action-setup@v2
       with:
-        version: 'latest'     
+        version: 'latest'
     - name: Clean install dependencies
       run: pnpm install
     - name: Install Playwright
