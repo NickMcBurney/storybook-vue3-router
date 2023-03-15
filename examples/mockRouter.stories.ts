@@ -1,4 +1,4 @@
-import { mockRouter } from '../dist/esm'
+import { mockRouter } from '../dist'
 
 export default {
   title: 'Mock Router',

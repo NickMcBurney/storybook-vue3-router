@@ -65,7 +65,7 @@ export const withMockRouter: decoratorType = (
     })
 
     /* return the storybook story */
-    return storyFn(context)
+    return storyFn(context, context)
   }
 })
   
