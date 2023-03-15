@@ -82,11 +82,10 @@ export const withVueRouter: decoratorType = (
 
         /* go to initial route */
         initialRoute(router, options?.initialRoute)
-
-        /* return the storybook story */
       })
+      /* return the storybook story */
       return storyFn(context, context)
-    },
+    }
   })
 
 export default withVueRouter
