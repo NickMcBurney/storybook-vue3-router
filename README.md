@@ -15,6 +15,9 @@ There is also a [mocked router decorator](#mock-router) option for users who onl
 ## How to use
 This decorator works with Storybook's [Component Story Format (CSF)](https://storybook.js.org/docs/vue/api/csf) and [hoisted CSF annotations](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#hoisted-csf-annotations), which is the recommended way to write stories since Storybook 6. It has not been tested with the [storiesOf API](https://github.com/storybookjs/storybook/blob/master/lib/core/docs/storiesOf.md).
 
+### Storybook v6: Please use package version 2.x
+### Storybook v7: Please use package version 3.x
+
 ### Install the decorator
 
 ```node
