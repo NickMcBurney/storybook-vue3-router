@@ -17,7 +17,7 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "typings": "dist/index.d.ts",
-  "types": "dist/ts/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist/**/*"
   ],
@@ -66,6 +66,8 @@
   },
   "peerDependencies": {
     "@storybook/vue3": "7.x",
+    "@storybook/preview-api": "7.x",
+    "@storybook/types": "7.x",
     "vue": "3.x",
     "vue-router": "4.x"
   },
