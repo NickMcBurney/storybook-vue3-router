@@ -4,7 +4,7 @@ import esbuild from 'rollup-plugin-esbuild'
 const bundle = config => ({
   ...config,
   input: 'src/index.ts',
-  // external: id => !/^[./]/.test(id),
+  external: ['@storybook/vue3'],
 })
 
 export default [
