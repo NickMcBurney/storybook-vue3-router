@@ -1,31 +1,36 @@
-import { mockRouter } from '../dist/esm'
+import { mockRouter } from '../dist'
 
 export default {
   title: 'Mock Router',
+  args: {
+    path: '/',
+    some_meta: 'true',
+    some_param: 'false',
+    some_query: 'false'
+  },
   argTypes: {
     path: {
       control: 'text',
-      defaultValue: '/',
     },
     some_meta: {
       control: 'select',
       options: ['true', 'false'],
-      defaultValue: 'true',
     },
     some_param: {
       control: 'select',
       options: ['true', 'false'],
-      defaultValue: 'false',
     },
     some_query: {
       control: 'select',
       options: ['true', 'false'],
-      defaultValue: 'false',
     },
   }
 };
 
 export const Default = () => ({
+  args: {
+    path: '/'
+  },
   /* create template and pass Storybook args to <router-view> using props */
   template: `
     <div class="my-wrapper">

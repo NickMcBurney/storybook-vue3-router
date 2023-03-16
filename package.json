@@ -13,57 +13,59 @@
   },
   "author": "Nick McBurney",
   "license": "MIT",
-  "main": "dist/esm/index.js",
-  "module": "dist/esm/index.js",
-  "exports": {
-    "require": "./dist/cjs/index.js",
-    "import": "./dist/esm/index.js"
-  },
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "typings": "dist/index.d.ts",
   "types": "dist/ts/index.d.ts",
   "files": [
     "dist/**/*"
   ],
   "scripts": {
     "clean": "rimraf ./dist",
-    "buildBabel": "concurrently \"yarn buildBabel:cjs\" \"yarn buildBabel:esm\"",
-    "buildBabel:cjs": "babel ./src -d ./dist/cjs --extensions \".js,.jsx,.ts,.tsx\"",
-    "buildBabel:esm": "babel ./src -d ./dist/esm --env-name esm --extensions \".js,.jsx,.ts,.tsx\"",
-    "buildTsc": "tsc --declaration --emitDeclarationOnly --outDir ./dist/ts",
-    "prebuild": "yarn clean",
-    "build": "concurrently \"yarn buildBabel\" \"yarn buildTsc\"",
-    "build:watch": "concurrently \"yarn buildBabel:esm -- --watch\" \"yarn buildTsc -- --watch\"",
-    "storybook": "start-storybook -p 6006",
-    "dev": "concurrently \"yarn storybook -- --no-manager-cache --quiet\" \"yarn build:watch\"",
-    "build-storybook": "build-storybook",
-    "release": "yarn build && auto shipit",
+    "prebuild": "pnpm clean",
+    "build": "rollup -c",
+    "build:watch": "rollup -c --watch",
+    "storybook": "storybook dev -p 6006",
+    "dev": "concurrently \"pnpm storybook\" \"pnpm build:watch\"",
+    "build-storybook": "storybook build",
+    "release": "pnpm build && auto shipit",
     "test": "npx playwright test",
     "eject-ts": "zx scripts/eject-typescript.mjs"
   },
   "dependencies": {
-    "vue-router": "4.x"
+    "vue-router": "~4.1.6"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
-    "@babel/preset-typescript": "^7.13.0",
-    "@playwright/test": "^1.26.1",
-    "@storybook/addon-essentials": "^6.4.9",
-    "@storybook/addons": "^6.4.9",
-    "@storybook/vue3": "^6.4.9",
-    "auto": "^10.3.0",
-    "babel-loader": "^8.1.0",
-    "concurrently": "^6.2.0",
-    "jest": "^27.4.5",
-    "prettier": "^2.3.1",
+    "@playwright/test": "^1.29.2",
+    "@storybook/addon-actions": "7.0.0-rc.3",
+    "@storybook/addon-essentials": "7.0.0-rc.3",
+    "@storybook/addons": "7.0.0-rc.3",
+    "@storybook/blocks": "7.0.0-rc.3",
+    "@storybook/preview-api": "7.0.0-rc.3",
+    "@storybook/types": "7.0.0-rc.3",
+    "@storybook/vue3": "7.0.0-rc.3",
+    "@storybook/vue3-vite": "7.0.0-rc.3",
+    "@types/node": "^18.11.18",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "auto": "^10.37.6",
+    "concurrently": "^6.5.1",
+    "esbuild": "^0.17.11",
+    "prettier": "^2.8.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rimraf": "^3.0.2",
-    "typescript": "^4.2.4",
-    "vue": "^3.2.4",
-    "zx": "^1.14.1"
+    "rollup": "^3.19.1",
+    "rollup-plugin-dts": "^5.2.0",
+    "rollup-plugin-esbuild": "^5.0.0",
+    "storybook": "7.0.0-rc.3",
+    "typescript": "^4.9.4",
+    "vite": "^4.1.4",
+    "vue": "^3.2.47",
+    "zx": "^1.15.2"
   },
   "peerDependencies": {
-    "@storybook/addons": "^6.3.6",
-    "@storybook/vue3": "6.x",
+    "@storybook/vue3": "7.x",
     "vue": "3.x",
     "vue-router": "4.x"
   },
@@ -84,6 +86,5 @@
       "vue"
     ],
     "icon": "https://github.com/NickMcBurney/storybook-vue3-router/blob/main/vue-logo.png?raw=true"
-  },
-  "packageManager": "yarn@1.22.17"
+  }
 }

@@ -1,7 +1,7 @@
 import { computed } from 'vue'
 import { useRouter } from "vue-router";
 
-import vueRouter from '../dist/esm'
+import { vueRouter } from '../dist'
 
 import routerViewWrapper from './components/routerViewWrapper.vue'
 

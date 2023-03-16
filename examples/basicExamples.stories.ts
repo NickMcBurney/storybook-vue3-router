@@ -1,4 +1,4 @@
-import vueRouter from '../dist/esm'
+import { vueRouter } from '../dist'
 
 import routerViewWrapper from './components/routerViewWrapper.vue'
 
@@ -11,22 +11,21 @@ export default {
  * STORYBOOK EXPORT
  */
 /* STORYBOOK EXPORT -- BASIC */
-const BasicTemplate = () => ({
-  components: { 'RouterViewWrapper': routerViewWrapper },
+export const Default = () => ({
+  components: { routerViewWrapper },
   template: `
-    <RouterViewWrapper>
+    <router-view-wrapper>
       <router-view />
-    </RouterViewWrapper>
+    </router-view-wrapper>
   `
 })
 
-export const Default = BasicTemplate.bind({})
 Default.decorators = [
   vueRouter()
 ]
 
 /* STORYBOOK EXPORT -- WITH TRANSITION */
-const TransitionTemplate = () => ({
+export const WithTransition = () => ({
   components: { 'RouterViewWrapper': routerViewWrapper },
   template: `
     <RouterViewWrapper title="Storybook Vue 3 Router with Transition">
@@ -39,13 +38,12 @@ const TransitionTemplate = () => ({
   `
 })
 
-export const WithTransition = TransitionTemplate.bind({})
 WithTransition.decorators = [
   vueRouter()
 ]
 
 /* STORYBOOK EXPORT -- WITH INITIAL ROUTE OPTION */
-const InitialRouteTemplate = () => ({
+export const WithInitialRoute = () => ({
   components: { 'RouterViewWrapper': routerViewWrapper },
   template: `
     <RouterViewWrapper title="Storybook Vue 3 Router with Initial Route Option">
@@ -54,7 +52,6 @@ const InitialRouteTemplate = () => ({
   `
 })
 
-export const WithInitialRoute = InitialRouteTemplate.bind({})
 WithInitialRoute.decorators = [
   vueRouter(undefined, {
     initialRoute: '/about'
@@ -62,7 +59,7 @@ WithInitialRoute.decorators = [
 ]
 
 /* STORYBOOK EXPORT -- WITH VUE ROUTER OPTIONS */
-const VueRouteOptionsTemplate = () => ({
+export const WithVueRouteOptions = () => ({
   components: { 'RouterViewWrapper': routerViewWrapper },
   template: `
     <RouterViewWrapper title="Storybook Vue 3 Router with Vue Router Options">
@@ -71,7 +68,6 @@ const VueRouteOptionsTemplate = () => ({
   `
 })
 
-export const WithVueRouteOptions = VueRouteOptionsTemplate.bind({})
 WithVueRouteOptions.decorators = [
   vueRouter(undefined, {
     initialRoute: '/about',

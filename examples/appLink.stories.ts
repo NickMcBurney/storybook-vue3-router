@@ -1,4 +1,4 @@
-import vueRouter from '../dist/esm'
+import { vueRouter } from '../dist'
 
 import appLink from './components/appLink.vue'
 import routerViewWrapper from './components/routerViewWrapper.vue'

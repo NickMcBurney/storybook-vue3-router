@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - main
+    - next
 
 jobs:
   release:
@@ -20,12 +21,16 @@ jobs:
         with:
           node-version: 16.x
 
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 'latest'
+
       - name: Clean install dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          yarn release
+          pnpm release
