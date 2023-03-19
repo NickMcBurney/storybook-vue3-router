@@ -1,5 +1,5 @@
 import { setup } from '@storybook/vue3'
-import { makeDecorator } from '@storybook/addons'
+import { makeDecorator } from '@storybook/preview-api';
 import type { StoryContext, StoryFn } from '@storybook/types'
 
 import {
