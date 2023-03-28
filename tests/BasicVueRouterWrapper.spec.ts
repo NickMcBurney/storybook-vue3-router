@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const PLAYWRIGHT_TEST_BASE_URL = process.env.PLAYWRIGHT_TEST_BASE_URL as string || "https://deploy-preview-39--storybook-vue3-router.netlify.app/"
-
+const PLAYWRIGHT_TEST_BASE_URL = process.env.PLAYWRIGHT_TEST_BASE_URL as string || "https://storybook-vue3-router.netlify.app/"
 
 test.describe('Basic Route View Wrapper', () => {
   test.beforeEach(async ({ page }) => {
