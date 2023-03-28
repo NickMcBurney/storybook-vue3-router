@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const PLAYWRIGHT_TEST_BASE_URL = process.env.PLAYWRIGHT_TEST_BASE_URL as string || "https://deploy-preview-39--storybook-vue3-router.netlify.app/"
+const PLAYWRIGHT_TEST_BASE_URL = process.env.PLAYWRIGHT_TEST_BASE_URL as string || "https://storybook-vue3-router.netlify.app/"
 
 test.describe('Mock Router', () => {
   test.beforeEach(async ({ page }) => {
@@ -58,7 +58,7 @@ test.describe('Mock Router', () => {
     // test programatic navigation events
     // ######################################
     // open actions panel
-    await page.locator('#tabbutton-actions').click()
+    await page.locator('#tabbutton-storybook-actions-panel').click()
     // get actions panel content
     const actionsPanel = await page.locator('#panel-tab-content')
 
