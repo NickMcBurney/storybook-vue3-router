@@ -17,6 +17,7 @@ const BasicTemplate = () => ({
   template: `
   <RouterViewWrapper title="Storybook Vue 3 Router custom appLink component">
     <div>
+      <GlobalButton>Testing</GlobalButton>
       <div style="display: flex; gap: 1em">
         <appLink to="/">appLink: Home</appLink>
         <appLink to="/about/">appLink: About</appLink>
