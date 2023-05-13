@@ -1,15 +1,13 @@
 <script setup lang="ts">
-defineProps({
-  buttonText: String
-})
+import { ref } from 'vue'
+
+const disabled = ref(false)
 
 function click() {
-  console.log('button clicked')
+  disabled.value = true
 }
-
-console.log('BASIC BUTTON LOADED')
 </script>
 
 <template>
-  <button @click="click">{{ buttonText }}</button>
+  <button @click="click" :disabled="disabled"><slot /></button>
 </template>
