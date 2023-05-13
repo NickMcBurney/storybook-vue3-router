@@ -44,11 +44,8 @@ export const withVueRouter: decoratorType = (
     parameterName: 'withVueRouter',
 
     wrapper: (storyFn: StoryFn, context: StoryContext<VueRenderer>) => {
-      console.log('wrapper', context)
-      // const app = (context.canvasElement as any).__vue_app__
       /* check if there is an existing router */
       setup((app) => {
-        console.log('wrapper:setup', app)
         /* setup router var */
         let router
 
