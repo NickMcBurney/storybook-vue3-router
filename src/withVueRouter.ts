@@ -1,4 +1,4 @@
-import { setup, VueRenderer } from '@storybook/vue3'
+import { setup } from '@storybook/vue3'
 import { makeDecorator } from '@storybook/preview-api';
 import type { StoryContext, StoryFn } from '@storybook/types'
 
@@ -43,8 +43,7 @@ export const withVueRouter: decoratorType = (
     name: 'withVueRouter',
     parameterName: 'withVueRouter',
 
-    wrapper: (storyFn: StoryFn, context: StoryContext<VueRenderer>) => {
-      /* check if there is an existing router */
+    wrapper: (storyFn: StoryFn, context: StoryContext) => {
       setup((app) => {
         /* setup router var */
         let router
