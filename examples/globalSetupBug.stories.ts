@@ -1,11 +1,8 @@
 import { vueRouter } from '../dist'
-
-import appLink from './components/appLink.vue'
 import routerViewWrapper from './components/routerViewWrapper.vue'
 
 export default {
-  title: 'Router Link',
-  component: routerViewWrapper,
+  title: 'Global Preview.js Component and Vue Router Decorator',
 }
 
 /**
@@ -13,15 +10,13 @@ export default {
  */
 /* STORYBOOK EXPORT -- BASIC */
 const BasicTemplate = () => ({
-  components: { 'appLink': appLink, 'RouterViewWrapper': routerViewWrapper },
+  components: { 'RouterViewWrapper': routerViewWrapper },
   template: `
   <RouterViewWrapper title="Storybook Vue 3 Router custom appLink component">
     <div>
-      <div style="display: flex; gap: 1em">
-        <appLink to="/">appLink: Home</appLink>
-        <appLink to="/about/">appLink: About</appLink>
-        <appLink to="https://www.google.com">appLink: External Link</appLink>
-      </div>
+      <p>This story replicates a bug with current SB7 and this decorator using vue setup()</p>
+      <p>The below should render as a button using the ./components/BasicButton.vue component - which is imported globally via preview.js</p>
+      <GlobalButton>A global button</GlobalButton>
       <router-view />
     </div>
   </RouterViewWrapper>
