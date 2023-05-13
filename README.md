@@ -50,7 +50,7 @@ Default.decorators = [
 You can see [the examples stories](https://github.com/NickMcBurney/storybook-vue3-router/tree/main/examples) published on this [demo](https://storybook-vue3-router.netlify.app/).
 
 ## Advanced usage
-This decorator comes with optioal params for customising the implementation of your `vue-router` within Storybook.
+This decorator comes with optional params for customising the implementation of your `vue-router` within Storybook.
 
 ### Custom Routes
 ```typescript
@@ -99,7 +99,7 @@ Default.decorators = [
 ```
 
 ### Custom Routes (with initial route)
-By default the decorator will default the starting route to `/`, if you want to change this you can pass as a paramtor to the decorator
+By default the decorator will default the starting route to `/`, if you want to change this you can pass as a parameter to the decorator
 
 ```typescript
 /* define our custom routes */
