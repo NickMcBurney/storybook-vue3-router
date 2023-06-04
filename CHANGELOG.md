@@ -1,3 +1,31 @@
+# v3.0.0 (Sun Jun 04 2023)
+
+#### 💥 Breaking Change
+
+- [next]: Storybook v7 Support [#39](https://github.com/NickMcBurney/storybook-vue3-router/pull/39) ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### 🐛 Bug Fix
+
+- Upgrade to storybook@7.0.2 [#45](https://github.com/NickMcBurney/storybook-vue3-router/pull/45) ([@NickMcBurney](https://github.com/NickMcBurney))
+- [next]: Upgrading to storybook@7.0.0-rc.10 [#43](https://github.com/NickMcBurney/storybook-vue3-router/pull/43) ([@NickMcBurney](https://github.com/NickMcBurney))
+- [next]: Upgrading to storybook@7.0.0-rc.8 [#41](https://github.com/NickMcBurney/storybook-vue3-router/pull/41) ([@NickMcBurney](https://github.com/NickMcBurney))
+- [next]: Upgrading to storybook@7.0.0-rc.4 [#40](https://github.com/NickMcBurney/storybook-vue3-router/pull/40) ([@NickMcBurney](https://github.com/NickMcBurney))
+- [AUTOMATED TESTS] - Router Guards [#36](https://github.com/NickMcBurney/storybook-vue3-router/pull/36) ([@NickMcBurney](https://github.com/NickMcBurney))
+- [AUTOMATED TESTS] - Mock Router [#34](https://github.com/NickMcBurney/storybook-vue3-router/pull/34) ([@NickMcBurney](https://github.com/NickMcBurney))
+- [AUTOMATED TESTS] - Playwright Init & Basic Tests [#33](https://github.com/NickMcBurney/storybook-vue3-router/pull/33) ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### 📝 Documentation
+
+- [DOCS] Adding `mockRouter` documentation [#35](https://github.com/NickMcBurney/storybook-vue3-router/pull/35) ([@NickMcBurney](https://github.com/NickMcBurney))
+- Adding appLink component with useLink api [#25](https://github.com/NickMcBurney/storybook-vue3-router/pull/25) ([@NickMcBurney](https://github.com/NickMcBurney))
+- Adding example for prefixed router props [#30](https://github.com/NickMcBurney/storybook-vue3-router/pull/30) ([@NickMcBurney](https://github.com/NickMcBurney))
+
+#### Authors: 1
+
+- Nick McBurney ([@NickMcBurney](https://github.com/NickMcBurney))
+
+---
+
 # v2.3.1 (Sat Jul 16 2022)
 
 #### ⚠️ Pushed to `main`
