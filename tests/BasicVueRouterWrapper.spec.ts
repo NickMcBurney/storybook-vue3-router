@@ -2,18 +2,18 @@ import { test, expect } from '@playwright/test';
 
 const PLAYWRIGHT_TEST_BASE_URL = process.env.PLAYWRIGHT_TEST_BASE_URL as string || "https://storybook-vue3-router.netlify.app/"
 
-
 test.describe('Basic Route View Wrapper', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(PLAYWRIGHT_TEST_BASE_URL);
   
     // Go to story
     await page.click("text=Basic Router View Wrapper")
+    await page.locator("#basic-router-view-wrapper--default").click()
   })
 
   test('Basic Page Elements Load', async ({ page }) => {
     // Get story iframe
-    const story = await page.frameLocator('#storybook-preview-iframe').locator('#root')
+    const story = await page.frameLocator('#storybook-preview-iframe').locator('#storybook-root')
 
     // ###################################
     // test basic page elements on load
@@ -29,7 +29,7 @@ test.describe('Basic Route View Wrapper', () => {
 
   test('Basic Router Link Works', async ({ page }) => {
     // Get story iframe
-    const story = await page.frameLocator('#storybook-preview-iframe').locator('#root')
+    const story = await page.frameLocator('#storybook-preview-iframe').locator('#storybook-root')
 
     // ###################################
     // test router link works

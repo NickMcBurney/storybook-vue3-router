@@ -8,11 +8,12 @@ test.describe('Mock Router', () => {
   
     // Go to story
     await page.click("text=Mock Router")
+    await page.locator("#mock-router--default").click()
   })
   
   test('$route: Loads Mock Route Object', async ({ page }) => {    
     // Get story iframe
-    const story = await page.frameLocator('#storybook-preview-iframe').locator('#root')
+    const story = await page.frameLocator('#storybook-preview-iframe').locator('#storybook-root')
   
     // ######################################
     // test mock router object is displayed
@@ -39,7 +40,7 @@ test.describe('Mock Router', () => {
     await page.click("text=Dynamic Template")
   
     // Get story iframe
-    const story = await page.frameLocator('#storybook-preview-iframe').locator('#root')
+    const story = await page.frameLocator('#storybook-preview-iframe').locator('#storybook-root')
   
     // ######################################
     // test mock meta data
@@ -51,13 +52,13 @@ test.describe('Mock Router', () => {
     await page.click("text=Programatic Navigation")
   
     // Get story iframe
-    const story = await page.frameLocator('#storybook-preview-iframe').locator('#root')
+    const story = await page.frameLocator('#storybook-preview-iframe').locator('#storybook-root')
   
     // ######################################
     // test programatic navigation events
     // ######################################
     // open actions panel
-    await page.locator('#tabbutton-actions').click()
+    await page.locator('#tabbutton-storybook-actions-panel').click()
     // get actions panel content
     const actionsPanel = await page.locator('#panel-tab-content')
 

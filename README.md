@@ -15,6 +15,10 @@ There is also a [mocked router decorator](#mock-router) option for users who onl
 ## How to use
 This decorator works with Storybook's [Component Story Format (CSF)](https://storybook.js.org/docs/vue/api/csf) and [hoisted CSF annotations](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#hoisted-csf-annotations), which is the recommended way to write stories since Storybook 6. It has not been tested with the [storiesOf API](https://github.com/storybookjs/storybook/blob/master/lib/core/docs/storiesOf.md).
 
+### Storybook v6: Please use package version 2.x
+### Storybook v7: Please use package version 3.x
+See [migration guides](#v2x--v3x-migration).
+
 ### Install the decorator
 
 ```node
@@ -28,7 +32,7 @@ The default setup will create a `vue-router` instance, with 2 routes (`/` and `/
 
 ```typescript
 /* import storybook-vue3-router */
-import vueRouter from 'storybook-vue3-router'
+import { vueRouter } from 'storybook-vue3-router'
 
 /* ...story setup... */
 
@@ -182,8 +186,19 @@ Default.decorators = [
 
 You can see examples of the `mockRouter` in our [storybook demo site](https://storybook-vue3-router.netlify.app/?path=/story/mock-router--default), and our [code examples](https://github.com/NickMcBurney/storybook-vue3-router/tree/main/examples/mockRouter.stories.ts)
 
+## v2.x > v3.x Migration
+### ⚠️ BREAKING CHANGE ⚠️
 
-## v2.x Migration
+v3.x version no longer uses default export for `vueRouter` decorator, you will need to update to using named import:
+
+```typescript
+/* DONT */
+import vueRouter from 'storybook-vue3-router'
+/* DO */
+import { vueRouter } from 'storybook-vue3-router'
+```
+
+## v1.x > v2.x Migration
 The migration from v1 brings some breaking changes:
 
 ```typescript
