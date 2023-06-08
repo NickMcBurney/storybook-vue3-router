@@ -30,7 +30,7 @@
     "dev": "concurrently \"pnpm storybook\" \"pnpm build:watch\"",
     "build-storybook": "storybook build",
     "publish": "pnpm build && auto shipit",
-    "release:": "auto release --dry-run",
+    "release": "auto release --dry-run",
     "test": "npx playwright test",
     "eject-ts": "zx scripts/eject-typescript.mjs"
   },
