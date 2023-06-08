@@ -24,9 +24,9 @@ jobs:
       - name: Clean install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Create Release
+      - name: Create Changelog
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          pnpm release
+          pnpm changelog
