@@ -30,7 +30,7 @@
     "dev": "concurrently \"pnpm storybook\" \"pnpm build:watch\"",
     "build-storybook": "storybook build",
     "publish": "pnpm build && auto shipit",
-    "changelog": "auto changelog --to=v3.0.0",
+    "changelog": "auto changelog",
     "test": "npx playwright test",
     "eject-ts": "zx scripts/eject-typescript.mjs"
   },
