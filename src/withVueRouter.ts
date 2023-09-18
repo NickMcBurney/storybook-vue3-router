@@ -1,5 +1,5 @@
-import { setup } from '@storybook/vue3'
-import { makeDecorator } from '@storybook/preview-api';
+import { setup, Decorator } from '@storybook/vue3'
+import { App } from 'vue';
 import type { StoryContext, StoryFn } from '@storybook/types'
 
 import {
@@ -17,7 +17,6 @@ import { globalRouterGuardFn, initialRoute, resetRoutes } from './utils'
 
 type MockRouter = Router & { isMocked?: boolean }
 type MockRoute = RouteLocationNormalizedLoaded & { isMocked?: boolean }
-type decoratorType = ReturnType<typeof makeDecorator>
 
 /**
  * Add a vue router instance to Storybook stories
@@ -29,7 +28,7 @@ type decoratorType = ReturnType<typeof makeDecorator>
  * If there is a previously initialized story using vue-router and you wish to use `beforeEach` to apply global router guards via `options` param,
  * we must reload the story in order to apply the global route guards, this can have a minor performance impact.
  */
-export const withVueRouter: decoratorType = (
+export function withVueRouter (
   /* optional: routes param - uses `defaultRoutes` if not provided */
   routes = defaultRoutes,
   /* optional: router options - used to pass `initialRoute` value, `beforeEach()` navigation guard methods and vue-router `createRouter` options */
@@ -38,13 +37,15 @@ export const withVueRouter: decoratorType = (
     beforeEach?: NavigationGuard;
     vueRouterOptions?: RouterOptions;
   }
-) =>
-  makeDecorator({
-    name: 'withVueRouter',
-    parameterName: 'withVueRouter',
+): Decorator {
+  let app: App
 
-    wrapper: (storyFn: StoryFn, context: StoryContext) => {
-      setup((app) => {
+  setup((setupApp: App) => {
+    app = setupApp
+  })
+
+  return () => ({
+    setup () {
         /* setup router var */
         let router
 
@@ -79,10 +80,8 @@ export const withVueRouter: decoratorType = (
 
         /* go to initial route */
         initialRoute(router, options?.initialRoute)
-      })
-      /* return the storybook story */
-      return storyFn(context, context)
-    }
+    },
+    template: '<story/>'
   })
-
+}
 export default withVueRouter
