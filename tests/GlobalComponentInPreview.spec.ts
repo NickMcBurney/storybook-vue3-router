@@ -8,7 +8,7 @@ test.describe('Global Preview Setup() with Vue Router Setup()', () => {
   
     // Go to story
     await page.click("text=Global Preview.js Component and Vue Router Decorator")
-    await page.locator("#basic-router-view-wrapper--default").click()
+    await page.locator("#global-preview-js-component-and-vue-router-decorator--default").click()
   })
 
   test('Global Button Component Loads', async ({ page }) => {
