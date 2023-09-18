@@ -5,7 +5,7 @@ on: [pull_request]
 
 jobs:
   e2e:
-    name: Run integration tests
+    name: Run Itegration Tests
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -19,15 +19,22 @@ jobs:
     - uses: pnpm/action-setup@v2
       with:
         version: 'latest'
-    - name: Clean install dependencies
+
+    - name: Install Dependencies
       run: pnpm install
+
     - name: Install Playwright
       run: npx playwright install --with-deps
-    - name: Run your tests
+
+    - name: Publish:Dry-Run
+      run: pnpm publish:dry
+
+    - name: Run Playwright Tests
       run: pnpm run test
       env:
         PLAYWRIGHT_TEST_BASE_URL: ${{ steps.get-netlify-url.outputs.url }}
-    - name: Upload test results
+
+    - name: Upload Test Results
       if: always()
       uses: actions/upload-artifact@v2
       with:
