@@ -11,6 +11,19 @@
 
 ---
 
+# v4.0.1 (Tue Sep 19 2023)
+
+#### ⚠️ Pushed to `main`
+
+- v4.0.1 (nick@nickmcburney.co.uk)
+- v4 (nick@nickmcburney.co.uk)
+
+#### Authors: 1
+
+- Nick McBurney (nick@nickmcburney.co.uk)
+
+---
+
 # v3.0.1 (Thu Jun 08 2023)
 
 
