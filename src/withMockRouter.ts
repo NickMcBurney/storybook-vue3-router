@@ -1,6 +1,6 @@
 
-import { setup } from '@storybook/vue3'
-import { makeDecorator } from '@storybook/preview-api'
+import { setup, Decorator } from '@storybook/vue3'
+import { App } from 'vue';
 import { action } from '@storybook/addon-actions'
 import type { StoryContext, StoryFn } from '@storybook/types'
 
@@ -14,7 +14,6 @@ import { getFromArgs } from './utils'
 
 type MockRouter = Router & { isMocked?: boolean }
 type MockRoute = RouteLocationNormalizedLoaded & { isMocked?: boolean }
-type decoratorType = ReturnType<typeof makeDecorator>
 
 /**
  * Add a vue router instance to Storybook stories
@@ -26,15 +25,20 @@ type decoratorType = ReturnType<typeof makeDecorator>
  * If there is a previously initialized story using vue-router and you wish to use `beforeEach` to apply global router guards via `options` param,
  * we must reload the story in order to apply the global route guards, this can have a minor performance impact.
  */
-export const withMockRouter: decoratorType = (
-  options: { meta?: Array<string>, params?: Array<string>, query?: Array<string> }
-) => makeDecorator({
-  name: 'withMockRouter',
-  parameterName: 'withMockRouter',
+export function withMockRouter (
+    /* optional: router options - used to pass `initialRoute` value, `beforeEach()` navigation guard methods and vue-router `createRouter` options */
+    options: { meta?: Array<string>, params?: Array<string>, query?: Array<string> }
+): Decorator {
+  let app: App
+  let ctx: StoryContext
 
-  wrapper: (storyFn: StoryFn, context: StoryContext) => {
-    /* check if there is an existing router */
-    setup((app) => {
+  setup((setupApp: App, context: StoryContext) => {
+    app = setupApp
+    ctx = context
+  })
+
+  return () => ({
+    setup () {
       const existingRouter = app.config.globalProperties.$router as MockRouter
       const existingRoute = app.config.globalProperties.$route as MockRoute
       
@@ -54,19 +58,17 @@ export const withMockRouter: decoratorType = (
         } as MockRouter
         app.config.globalProperties.$route = {
           isMocked: true, // !IMPORTANT this line is required to ensure the full vue-router implementation can initialize
-          path: context.args.path || '/',
-          fullPath: `/#${context.args.path}`,
-          name: context.args.name || 'home',
-          meta: options.meta ? getFromArgs(context.args, options.meta) : {},
-          params: options.params ? getFromArgs(context.args, options.params) : {},
-          query: options.query ? getFromArgs(context.args, options.query) : {},
+          path: ctx.args?.path || '/',
+          fullPath: `/#${ctx.args?.path}`,
+          name: ctx.args?.name || 'home',
+          meta: options.meta ? getFromArgs(ctx.args, options.meta) : {},
+          params: options.params ? getFromArgs(ctx.args, options.params) : {},
+          query: options.query ? getFromArgs(ctx.args, options.query) : {},
         } as MockRoute
       }
-    })
-
-    /* return the storybook story */
-    return storyFn(context, context)
-  }
-})
+    },
+    template: '<story/>'
+  })
+}
   
 export default withMockRouter

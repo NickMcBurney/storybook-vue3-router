@@ -4,7 +4,7 @@ import esbuild from 'rollup-plugin-esbuild'
 const bundle = config => ({
   ...config,
   input: 'src/index.ts',
-  external: ['@storybook/vue3'],
+  external: ['@storybook/vue3', 'vue'],
 })
 
 export default [
@@ -24,7 +24,11 @@ export default [
     ],
   }),
   bundle({
-    plugins: [dts()],
+    plugins: [dts({
+      compilerOptions: {
+        preserveSymlinks: false
+      }
+    })],
     output: {
       file: 'dist/index.d.ts',
       format: 'es',
