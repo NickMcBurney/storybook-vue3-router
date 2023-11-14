@@ -1,6 +1,5 @@
-import { setup, Decorator } from '@storybook/vue3'
-import { App } from 'vue';
-import type { StoryContext, StoryFn } from '@storybook/types'
+import { Decorator } from '@storybook/vue3'
+import { getCurrentInstance } from 'vue';
 
 import {
   createRouter,
@@ -38,14 +37,10 @@ export function withVueRouter (
     vueRouterOptions?: RouterOptions;
   }
 ): Decorator {
-  let app: App
-
-  setup((setupApp: App) => {
-    app = setupApp
-  })
-
   return () => ({
     setup () {
+        const { app } = getCurrentInstance()!.appContext
+
         /* setup router var */
         let router
 

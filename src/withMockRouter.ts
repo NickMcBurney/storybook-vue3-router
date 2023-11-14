@@ -1,8 +1,7 @@
 
-import { setup, Decorator } from '@storybook/vue3'
-import { App } from 'vue';
+import { Decorator } from '@storybook/vue3'
+import { getCurrentInstance } from 'vue';
 import { action } from '@storybook/addon-actions'
-import type { StoryContext, StoryFn } from '@storybook/types'
 
 import type {
   Router,
@@ -29,16 +28,9 @@ export function withMockRouter (
     /* optional: router options - used to pass `initialRoute` value, `beforeEach()` navigation guard methods and vue-router `createRouter` options */
     options: { meta?: Array<string>, params?: Array<string>, query?: Array<string> }
 ): Decorator {
-  let app: App
-  let ctx: StoryContext
-
-  setup((setupApp: App, context: StoryContext) => {
-    app = setupApp
-    ctx = context
-  })
-
-  return () => ({
+  return (_, ctx) => ({
     setup () {
+      const { app } = getCurrentInstance()!.appContext
       const existingRouter = app.config.globalProperties.$router as MockRouter
       const existingRoute = app.config.globalProperties.$route as MockRoute
       

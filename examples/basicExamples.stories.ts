@@ -5,6 +5,7 @@ import routerViewWrapper from './components/routerViewWrapper.vue'
 export default {
   title: 'Basic Router View Wrapper',
   component: routerViewWrapper,
+  tags: ['autodocs'],
 }
 
 /**
