@@ -27,7 +27,7 @@ type MockRoute = RouteLocationNormalizedLoaded & { isMocked?: boolean }
  * If there is a previously initialized story using vue-router and you wish to use `beforeEach` to apply global router guards via `options` param,
  * we must reload the story in order to apply the global route guards, this can have a minor performance impact.
  */
-export function withVueRouter (
+export function withAsyncVueRouter (
   /* optional: routes param - uses `defaultRoutes` if not provided */
   routes = defaultRoutes,
   /* optional: router options - used to pass `initialRoute` value, `beforeEach()` navigation guard methods and vue-router `createRouter` options */
@@ -83,4 +83,4 @@ export function withVueRouter (
     `
   })
 }
-export default withVueRouter
+export default withAsyncVueRouter
