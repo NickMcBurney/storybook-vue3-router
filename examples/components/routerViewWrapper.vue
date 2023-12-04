@@ -25,7 +25,7 @@ export default defineComponent({
   },
   setup () {
     const route = useRoute()
-
+    console.log('created() route:', route.fullPath)
     const fullPath = computed(() => route.fullPath )
 
     return { fullPath }

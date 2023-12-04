@@ -16,7 +16,7 @@ There is also a [mocked router decorator](#mock-router) option for users who onl
 This decorator works with Storybook's [Component Story Format (CSF)](https://storybook.js.org/docs/vue/api/csf) and [hoisted CSF annotations](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#hoisted-csf-annotations), which is the recommended way to write stories since Storybook 6. It has not been tested with the [storiesOf API](https://github.com/storybookjs/storybook/blob/master/lib/core/docs/storiesOf.md).
 
 ### Storybook v6: Please use package version 2.x
-### Storybook v7: Please use package version 3.x
+### Storybook v7: Please use package version 3+
 See [migration guides](#v2x--v3x-migration).
 
 ### Install the decorator
@@ -116,15 +116,6 @@ const customRoutes = [
   }
 ]
 
-/* adding storybook-vue3-router decorator */
-Default.decorators = [
-  /* pass initialRoute to the decorator */
-  vueRouter(customRoutes, {
-    initialRoute: '/intro'
-  })
-]
-```
-
 ### With Router Options
 We can pass [Vue Router options](https://router.vuejs.org/api/index.html#history) into our decorator.
 
@@ -142,16 +133,66 @@ Default.decorators = [
 ]
 ```
 
+## `router.isReady()`
+If you have a router setup using `router.isReady()` and / or you have components which require specific route / route data on created lifecycle hook you may need to use the `asyncVueRouter` export.
+
+This export provides router which won't render story until router is ready.
+
+### Story setup
+```typescript
+import { asyncVueRouter } from 'storybook-vue3-router'
+
+/* define our custom routes */
+const customRoutes = [
+  {
+    path: '/',
+    name: 'dashboard',
+    component: Dashboard
+  },
+  {
+    path: '/intro',
+    name: 'intro',
+    component: Intro
+  }
+]
+
+/* adding storybook-vue3-router decorator */
+Default.decorators = [
+  /* pass initialRoute to the decorator */
+  asyncVueRouter(customRoutes, {
+    initialRoute: '/intro'
+  })
+]
+```
+
+### Preview.js Async Setup
+In order to use `async` router setup method, you will need to amend your .storybook/preview.js file to wrap stories in Vue 3's `<Suspense>` component. This is because the decorator requires an `async setup()` to correctly `await router.isReady()`. You can modify preview to:
+```typescript
+const preview = {
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: '<Suspense><story /></Suspense>',
+    }),
+  ],
+};
+
+export default preview;
+```
+
 See [the examples folder](https://github.com/NickMcBurney/storybook-vue3-router/tree/main/examples) for more advanced usage.
 
 ### Decorator Parameters
 ```typescript
 
 function vueRouter(routes: RouteRecordRaw[], options?: { initialRoute?: string, beforeEach?: NavigationGuard, vueRouterOptions?: RouterOptions })
+function asyncVueRouter(routes: RouteRecordRaw[], options?: { initialRoute?: string, beforeEach?: NavigationGuard, vueRouterOptions?: RouterOptions })
 ```
 
 ## Mock Router
-The full `vue-router` is not always needed - for example if you don't have components using `<router-view>` or `<router-link>` then using the `mockRouter` export may cover your needs (and reduce the imports being used in your project).
+The full `vue-router` is not always needed - for example if you don't have components using `<router-view>` or `<router-link>` then using the `mockRouter` export may cover your needs (and reduce the imports being used in your stories).
+
+Note: `mockRouter` will only work in instances where you are using options API `this.$route` and/or `this.$router`, it is not suitable for use-cases using vue router composables such as `useRoute()` and `useRouter()`.
 
 ### Use `mockRouter` in your stories
 The default setup will create mock `$router` and `$route` from `vue-router`, this allows you to create stories for components using programatic navigation and route based logic.
@@ -186,7 +227,7 @@ Default.decorators = [
 
 You can see examples of the `mockRouter` in our [storybook demo site](https://storybook-vue3-router.netlify.app/?path=/story/mock-router--default), and our [code examples](https://github.com/NickMcBurney/storybook-vue3-router/tree/main/examples/mockRouter.stories.ts)
 
-## v2.x > v3.x Migration
+## v2.x > v3+ Migration
 ### ⚠️ BREAKING CHANGE ⚠️
 
 v3.x version no longer uses default export for `vueRouter` decorator, you will need to update to using named import:
