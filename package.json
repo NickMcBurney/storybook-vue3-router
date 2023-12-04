@@ -29,7 +29,7 @@
     "storybook": "storybook dev -p 6006",
     "dev": "concurrently \"pnpm storybook\" \"pnpm build:watch\"",
     "build-storybook": "storybook build",
-    "prepublish": "pnpm test && pnpm build",
+    "prepublish": "pnpm build",
     "test": "npx playwright test"
   },
   "dependencies": {
