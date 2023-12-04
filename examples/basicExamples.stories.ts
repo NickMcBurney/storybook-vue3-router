@@ -1,5 +1,4 @@
-import { vueRouter } from '../dist'
-
+import { asyncVueRouter, vueRouter } from '../dist'
 import routerViewWrapper from './components/routerViewWrapper.vue'
 
 export default {
@@ -55,6 +54,21 @@ export const WithInitialRoute = () => ({
 
 WithInitialRoute.decorators = [
   vueRouter(undefined, {
+    initialRoute: '/about'
+  })
+]
+/* STORYBOOK EXPORT -- WITH INITIAL ROUTE OPTION - ASYNC */
+export const WithVueRouteOptionsAsync = () => ({
+  components: { 'RouterViewWrapper': routerViewWrapper },
+  template: `
+    <RouterViewWrapper title="Storybook Vue 3 Router with Initial Route Option (router.isReady())">
+      <router-view></router-view>
+    </RouterViewWrapper>
+  `
+})
+
+WithVueRouteOptionsAsync.decorators = [
+  asyncVueRouter(undefined, {
     initialRoute: '/about'
   })
 ]

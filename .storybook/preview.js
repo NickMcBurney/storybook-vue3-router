@@ -14,3 +14,14 @@ setup((app) => {
   console.log('PREVIEW.JS setup() log')
   app.component('GlobalButton', Button);
 });
+
+const preview = {
+  decorators: [
+    (story) => ({
+      components: { story },
+      template: '<Suspense><story /></Suspense>',
+    }),
+  ],
+};
+
+export default preview;
