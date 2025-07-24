@@ -1,7 +1,7 @@
 
 import { Decorator } from '@storybook/vue3'
 import { getCurrentInstance } from 'vue';
-import { action } from '@storybook/addon-actions'
+import { action } from 'storybook/actions'
 
 import type {
   Router,
