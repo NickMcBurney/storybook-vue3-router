@@ -69,9 +69,9 @@ export const ParamsObject = () => ({
 
 ParamsObject.decorators = [
   mockRouter({
-    meta: ['some_meta'],
+    meta: { some: 'meta' },
     params:{ "type": "custom", "projectId": "1", "tab": "products", "vProduct": "1" },
-    query: ['some_query']
+    query: { 'some': 'query' }
   })
 ]
 
