@@ -9,7 +9,7 @@ import type {
   RouteLocationNormalizedLoaded
 } from 'vue-router'
 
-import { getFromArgs } from './utils'
+import { getFromArgs, type ArgsArrayOrObject } from './utils'
 
 type MockRouter = Router & { isMocked?: boolean }
 type MockRoute = RouteLocationNormalizedLoaded & { isMocked?: boolean }
@@ -26,7 +26,7 @@ type MockRoute = RouteLocationNormalizedLoaded & { isMocked?: boolean }
  */
 export function withMockRouter (
     /* optional: router options - used to pass `initialRoute` value, `beforeEach()` navigation guard methods and vue-router `createRouter` options */
-    options: { meta?: Array<string>, params?: Array<string>, query?: Array<string> }
+    options: { meta?: ArgsArrayOrObject, params?: ArgsArrayOrObject, query?: ArgsArrayOrObject }
 ): Decorator {
   return (_, ctx) => ({
     setup () {

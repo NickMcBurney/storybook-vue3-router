@@ -43,11 +43,19 @@ export function resetRoutes(router: Router, newRoutes: RouteRecordRaw[]): void {
 }
 
 type argObjectKeys = Record<string, unknown>
-export function getFromArgs(args: argObjectKeys, options: Array<string>) {
+export type ArgsArrayOrObject = Array<string> | { [key: string]: string }
+export function getFromArgs(args: argObjectKeys, options: ArgsArrayOrObject): argObjectKeys {
   let filtered: argObjectKeys = {}
-  options.forEach((option) => {
-    filtered = { ...filtered, [option]: args[option] }
-  })
-
+  if (Array.isArray(options)) {
+    options.forEach((option) => {
+      filtered = { ...filtered, [option]: args[option] }
+    })
+  } else if (typeof options === 'object' && options !== null) {
+    Object.keys(options).forEach((option) => {
+      filtered = { ...filtered, [option]: options[option] }
+    })
+  } else {
+    filtered = { ...filtered }
+  }
   return filtered
 }
