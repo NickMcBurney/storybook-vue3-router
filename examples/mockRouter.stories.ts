@@ -51,6 +51,30 @@ Default.decorators = [
   })
 ]
 
+export const ParamsObject = () => ({
+  args: {
+    path: '/'
+  },
+  /* create template and pass Storybook args to <router-view> using props */
+  template: `
+    <div class="my-wrapper">
+      <div>
+        <h2>$route:</h2>
+        <pre>&lt;pre&gt;&#123;&#123;&nbsp;&sect;route&nbsp;&#125;&#125;&lt;/pre&gt;</pre>
+        <pre>{{ $route }}</pre>
+      </div>
+    </div>
+  `
+})
+
+ParamsObject.decorators = [
+  mockRouter({
+    meta: ['some_meta'],
+    params:{ "type": "custom", "projectId": "1", "tab": "products", "vProduct": "1" },
+    query: ['some_query']
+  })
+]
+
 export const DynamicTemplate = () => ({
   /* create template and pass Storybook args to <router-view> using props */
   template: `
