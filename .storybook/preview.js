@@ -1,4 +1,4 @@
-import { setup } from '@storybook/vue3';
+import { setup } from '@storybook/vue3-vite';
 import Button from '../examples/components/BasicButton.vue';
 
 export const parameters = {

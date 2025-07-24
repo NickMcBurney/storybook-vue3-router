@@ -1,4 +1,4 @@
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 import { ref, computed } from 'vue'
 import { useRouter } from "vue-router";

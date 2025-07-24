@@ -1,5 +1,5 @@
 import type { RouteRecordRaw } from "vue-router";
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 
 const Home = {
   template: `
