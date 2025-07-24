@@ -1,6 +1,6 @@
-import { addons } from "@storybook/addons"
+import { addons } from "@storybook/manager-api";
 
-import { ADDON_ID } from "../constants"
+import { ADDON_ID } from "../constants";
 
 // Register the addon
-addons.register(ADDON_ID)
+addons.register(ADDON_ID);
