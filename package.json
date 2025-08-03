@@ -57,7 +57,7 @@
     "zx": "^1.15.2"
   },
   "peerDependencies": {
-    "@storybook/vue3": "9.0.18",
+    "@storybook/vue3": "9.x",
     "vue": "3.x",
     "vue-router": "4.x"
   },
