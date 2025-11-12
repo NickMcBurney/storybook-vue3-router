@@ -12,12 +12,7 @@ export default [
     plugins: [esbuild()],
     output: [
       {
-        file: 'dist/index.cjs',
-        format: 'cjs',
-        sourcemap: true,
-      },
-      {
-        file: 'dist/index.mjs',
+        file: 'dist/index.js',
         format: 'es',
         sourcemap: true,
       },

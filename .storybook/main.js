@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   stories: ["./../examples/**/*.mdx", "../examples/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: ["../preset.js", "@storybook/addon-docs"],
   framework: {
