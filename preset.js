@@ -1,7 +1,5 @@
 function setup(entry = []) {
-  return [...entry, require.resolve("./dist/esm/preset")];
+  return [...entry, new URL('./dist/esm/preset', import.meta.url).pathname];
 }
 
-module.exports = {
-  setup
-};
+export { setup };

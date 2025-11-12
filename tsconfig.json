@@ -2,13 +2,13 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "esModuleInterop": true,
     "experimentalDecorators": true,
     "incremental": false,
     "isolatedModules": true,
     "jsx": "preserve",
     "lib": ["es2020", "dom"],
-    "module": "commonjs",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "noImplicitAny": true,
     "paths": {
       "~/*": ["src/*"],
@@ -18,5 +18,5 @@
     "skipLibCheck": true,
     "target": "esnext"
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "vite.config.ts"]
 }

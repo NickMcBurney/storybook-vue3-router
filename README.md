@@ -19,6 +19,7 @@ This decorator works with Storybook's [Component Story Format (CSF)](https://sto
 ### Storybook v7: Please use package version 3+
 ### Storybook v8: Please use package version 5.1.x
 ### Storybook v9: Please use package version 6.x
+### Storybook v10: Please use package version 7.x
 
 See [migration guides](#v2x--v3x-migration).
 
