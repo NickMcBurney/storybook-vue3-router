@@ -32,7 +32,7 @@
     "test": "npx playwright test"
   },
   "dependencies": {
-    "vue-router": "^4.6.3"
+    "vue-router": "^4.6.3 || ^5.0.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.1",
@@ -58,7 +58,7 @@
   "peerDependencies": {
     "@storybook/vue3": "10.x",
     "vue": "3.x",
-    "vue-router": "4.x"
+    "vue-router": "4.x || 5.x"
   },
   "peerDependenciesMeta": {
     "vue": {
